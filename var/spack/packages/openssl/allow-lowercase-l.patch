@@ -1,0 +1,16 @@
+--- A/config	2015-06-10 10:40:55.000000000 -0700
++++ B/config	2015-06-10 11:04:24.000000000 -0700
+@@ -164,11 +162,11 @@
+ 	echo "mips4-sgi-irix64"; exit 0
+ 	;;
+ 
+-    Linux:[2-9].*)
++    [lL]inux:[2-9].*)
+ 	echo "${MACHINE}-whatever-linux2"; exit 0
+ 	;;
+ 
+-    Linux:1.*)
++    [lL]inux:1.*)
+ 	echo "${MACHINE}-whatever-linux1"; exit 0
+ 	;;
+ 
