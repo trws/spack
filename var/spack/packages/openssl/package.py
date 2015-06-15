@@ -14,6 +14,8 @@ class Openssl(Package):
     depends_on("zlib")
     parallel = False
 
+    patch('allow-lowercase-l.patch')
+
     def install(self, spec, prefix):
         config = Executable("./config")
         config("--prefix=%s" % prefix,
