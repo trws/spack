@@ -54,5 +54,5 @@ def stage(parser, args):
     for spec in specs:
         package = spack.repo.get(spec)
         if args.path:
-            package.path = args.path
+            package.path = os.path.abspath(args.path)
         package.do_stage()
