@@ -45,6 +45,7 @@ class Flux(Package):
     depends_on("libxslt")
     depends_on("python")
     depends_on("py-cffi")
+    depends_on("jansson")
 
     # TODO: This provides a catalog, hacked with environment below for now
     depends_on("docbook-xml", type='build')
