@@ -33,6 +33,8 @@ class Sqlite(AutotoolsPackage):
     """
     homepage = "www.sqlite.org"
 
+    version('3.22.0', '96b5648d542e8afa6ab7ffb8db8ddc3d',
+            url='https://www.sqlite.org/2017/sqlite-autoconf-3220000.tar.gz')
     version('3.20.0', 'e262a28b73cc330e7e83520c8ce14e4d',
             url='https://www.sqlite.org/2017/sqlite-autoconf-3200000.tar.gz')
     version('3.18.0', 'a6687a8ae1f66abc8df739aeadecfd0c',
