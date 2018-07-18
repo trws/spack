@@ -32,9 +32,20 @@ class Flux(AutotoolsPackage):
     homepage = "https://github.com/flux-framework/flux-core"
     url      = "https://github.com/flux-framework/flux-core/releases/download/v0.8.0/flux-core-0.8.0.tar.gz"
 
-    version('0.8.0', md5='9ee12974a8b2ab9a30533f69826f3bec')
-    version('master', branch='master',
-            git='https://github.com/flux-framework/flux-core')
+    git_core = 'https://github.com/flux-framework/flux-core'
+    sched_res_opts = {
+        'git' : 'https://github.com/flux-framework/flux-sched',
+        'name' : 'sched',
+    }
+
+    version('0.8.0', tag='v0.8.0', git=git_core)
+    resource(tag='v0.4.0', when='@0.8.0', **sched_res_opts)
+
+    version('0.9.0', tag='v0.9.0', git=git_core)
+    resource(tag='v0.5.0', when='@0.9.0', **sched_res_opts)
+
+    version('master', branch='master', git=git_core)
+    resource(branch='master', when='@master', **sched_res_opts)
 
     variant('doc', default=False, description='Build flux manpages')
 
@@ -56,21 +67,24 @@ class Flux(AutotoolsPackage):
     depends_on("automake", type='build', when='@master')
     depends_on("libtool", type='build', when='@master')
 
-    def setup():
+    def setup(self):
         pass
 
     @when('@master')
     def setup(self):
         # Allow git-describe to get last tag so flux-version works:
         git = which('git')
-        git('pull', '--depth=50', '--tags')
+        git('fetch', '--tags')
 
     def autoreconf(self, spec, prefix):
         self.setup()
-        if os.path.exists('autogen.sh'):
+        bash = which('bash')
+        if not os.path.exists('configure'):
             # Bootstrap with autotools
-            bash = which('bash')
             bash('./autogen.sh')
+        if not os.path.exists('./flux-sched/configure'):
+            # Bootstrap with autotools
+            bash('-c', 'cd flux-sched ; ./autogen.sh')
 
     def setup_environment(self, spack_env, run_env):
         #  Ensure ./fluxometer.lua can be found during flux's make check
