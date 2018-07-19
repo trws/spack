@@ -47,11 +47,15 @@ class Flux(AutotoolsPackage):
     version('master', branch='master', git=git_core)
     resource(branch='master', when='@master', **sched_res_opts)
 
+    build_directory = 'spack-build'
+
     variant('doc', default=False, description='Build flux manpages')
+    variant('cuda', default=False, description='Build dependencies with support for CUDA')
 
     depends_on("zeromq@4.0.4:")
     depends_on("czmq@2.2:")
-    depends_on("hwloc")
+    depends_on("hwloc@1.11.1:1.99")
+    depends_on("hwloc +cuda", when='+cuda')
     depends_on("lua@5.1:5.1.99")
     depends_on("lua-luaposix")
     depends_on("munge")
@@ -59,6 +63,8 @@ class Flux(AutotoolsPackage):
     depends_on("python")
     depends_on("py-cffi", type=('build', 'run'))
     depends_on("jansson")
+    depends_on("yaml-cpp")
+    depends_on("boost+graph")
 
     depends_on("asciidoc", type='build', when="+docs")
 
