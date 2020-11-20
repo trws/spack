@@ -38,12 +38,23 @@ class Raja(CMakePackage, CudaPackage, HipPackage):
     depends_on('cmake@3.8:', type='build')
     depends_on('cmake@3.9:', when='+cuda', type='build')
 
+    # variants +hip and amdgpu_targets are not automatically passed to
+    # dependencies, so do it manually.
+    depends_on('camp+hip', when='+hip')
+    amdgpu_targets = HipPackage.amd_gputargets_list()
+    for val in amdgpu_targets:
+        depends_on('camp amdgpu_target=%s' % val, when='amdgpu_target=%s' % val)
+
+    depends_on('camp')
+
     def cmake_args(self):
         spec = self.spec
 
         options = []
         options.append('-DENABLE_OPENMP={0}'.format(
             'ON' if '+openmp' in spec else 'OFF'))
+
+        options.append("-Dcamp_DIR={0}".format(spec['camp'].prefix))
 
         if '+cuda' in spec:
             options.extend([
