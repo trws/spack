@@ -6,7 +6,7 @@
 from spack import *
 
 
-class Kripke(CMakePackage):
+class Kripke(CMakePackage,CudaPackage):
     """Kripke is a simple, scalable, 3D Sn deterministic particle
        transport proxy/mini app.
     """
@@ -23,19 +23,26 @@ class Kripke(CMakePackage):
     variant('mpi',    default=True, description='Build with MPI.')
     variant('openmp', default=True, description='Build with OpenMP enabled.')
     variant('caliper', default=False, description='Build with Caliper support enabled.')
+    variant('chai', default=False, description='Build with CHAI/umpire memory management.')
 
     depends_on('mpi', when='+mpi')
     depends_on('cmake@3.0:', type='build')
     depends_on('caliper', when='+caliper')
 
-    def cmake_args(self):
-        def enabled(variant):
-            return (1 if variant in self.spec else 0)
+    depends_on('raja')
+    depends_on('raja+cuda', when='+cuda')
+    depends_on('chai', when='+chai')
+    depends_on('chai+cuda', when='+chai+cuda')
 
+    def dfve(self, name, prefix='ENABLE_'):
+        return self.define_from_variant(prefix + name.upper(), name)
+    def cmake_args(self):
         return [
-            '-DENABLE_OPENMP=%d' % enabled('+openmp'),
-            '-DENABLE_MPI=%d' % enabled('+mpi'),
-            '-DENABLE_CALIPER=%d' % enabled('+caliper'),
+            self.dfve('openmp'),
+            self.dfve('mpi'),
+            self.dfve('caliper'),
+            self.dfve('cuda'),
+            self.dfve('chai'),
         ]
 
     def install(self, spec, prefix):
@@ -43,3 +50,6 @@ class Kripke(CMakePackage):
         # things into place.
         mkdirp(prefix.bin)
         install(join_path(self.build_directory, 'bin/kripke.exe'), prefix.bin)
+
+    def test(self):
+        self.run_test('kripke.exe', options=['--groups', '64', '--gset', '1', '--quad', '128', '--dset', '128', '--legendre', '4', '--zones', '64,32,32', '--procs', '1,1,1'])
