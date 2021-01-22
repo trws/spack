@@ -35,6 +35,7 @@ class Kripke(CMakePackage, CudaPackage):
 
     depends_on("raja")
     depends_on("raja+cuda", when="+cuda")
+    depends_on('raja+openmp', when='+openmp')
     depends_on("umpire", when="+chai")
     depends_on("chai", when="+chai")
     depends_on("chai+cuda", when="+chai+cuda")
