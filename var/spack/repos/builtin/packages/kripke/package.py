@@ -31,8 +31,9 @@ class Kripke(CMakePackage,CudaPackage):
 
     depends_on('raja')
     depends_on('raja+cuda', when='+cuda')
+    depends_on('raja+openmp', when='+openmp')
     depends_on('chai', when='+chai')
-    depends_on('chai+cuda', when='+chai+cuda')
+    depends_on('chai+cuda', when='+cuda')
 
     def dfve(self, name, prefix='ENABLE_'):
         return self.define_from_variant(prefix + name.upper(), name)

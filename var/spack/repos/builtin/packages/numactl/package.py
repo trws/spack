@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+import re
 
 
 class Numactl(AutotoolsPackage):
@@ -24,6 +25,14 @@ class Numactl(AutotoolsPackage):
     depends_on('automake', type='build')
     depends_on('libtool',  type='build')
     depends_on('m4',       type='build')
+
+    executables = [r'^numactl$']
+    @classmethod
+    def determine_version(cls, exe):
+        # numactl doesn't print a version for some reason, use pkg-config if exists
+        ver_str = Executable('pkg-config')('--modversion', 'numa', output=str, error=str)
+        match = re.search(r'^([0-9]*\.[0-9]*\.[0-9]*)', ver_str)
+        return match.group(1) if match else None
 
     def patch(self):
         # Remove flags not recognized by the NVIDIA compiler
