@@ -5,6 +5,7 @@
 
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Flecsi(CMakePackage):
@@ -68,6 +69,7 @@ class Flecsi(CMakePackage):
     depends_on('hpx@1.4.1 cxxstd=17 malloc=system max_cpu_count=128', when='backend=hpx')
     depends_on('hpx build_type=Debug', when='backend=hpx +debug_backend')
     depends_on('boost@1.70.0: cxxstd=17 +program_options')
+    depends_on(Boost.sensible_default_spec)
     depends_on('metis@5.1.0:')
     depends_on('parmetis@4.0.3:')
     depends_on('googletest@1.8.1+gmock')

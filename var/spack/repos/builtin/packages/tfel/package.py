@@ -7,6 +7,7 @@
 # 18/12/2018: fix python detection
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Tfel(CMakePackage):
@@ -105,6 +106,7 @@ class Tfel(CMakePackage):
     depends_on('python', when='+python_bindings',
                type=('build', 'link', 'run'))
     depends_on('boost+python+numpy', when='+python_bindings')
+    depends_on(Boost.sensible_default_spec, when='+python_bindings')
 
     extends('python', when='+python_bindings')
 

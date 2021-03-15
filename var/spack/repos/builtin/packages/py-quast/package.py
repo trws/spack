@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class PyQuast(PythonPackage):
@@ -17,6 +18,7 @@ class PyQuast(PythonPackage):
     version('4.6.0', sha256='6bee86654b457a981718a19acacffca6a3e74f30997ad06162a70fd2a181ca2e')
 
     depends_on('boost@1.56.0')
+    depends_on(Boost.sensible_default_spec)
     depends_on('perl@5.6.0:')
     depends_on('python@2.5:,3.3:')
     depends_on('py-setuptools',    type='build')

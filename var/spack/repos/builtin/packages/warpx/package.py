@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Warpx(CMakePackage):
@@ -69,6 +70,7 @@ class Warpx(CMakePackage):
     depends_on('blaspp', when='+psatd dims=rz')
     depends_on('blaspp +cuda', when='+psatd dims=rz compute=cuda')
     depends_on('boost@1.66.0: +math', when='+qedtablegen')
+    depends_on(Boost.sensible_default_spec, when='+qedtablegen')
     depends_on('cmake@3.15.0:', type='build')
     depends_on('cuda@9.2.88:', when='compute=cuda')
     depends_on('fftw@3:', when='+psatd compute=omp')

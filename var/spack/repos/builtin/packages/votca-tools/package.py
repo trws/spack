@@ -5,6 +5,7 @@
 
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class VotcaTools(CMakePackage):
@@ -44,7 +45,7 @@ class VotcaTools(CMakePackage):
     depends_on("fftw-api@3")
     depends_on("gsl", when="@1.4:1.4.9999")
     depends_on("eigen@3.3:", when="@stable,1.5:")
-    depends_on("boost")
+    depends_on(Boost.sensible_default_spec)
     depends_on("sqlite", when="@1.4:1.5.9999")
     depends_on('mkl', when='+mkl')
 

@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 import os
 
 
@@ -32,6 +33,7 @@ class FluxSched(AutotoolsPackage):
     variant('cuda', default=False, description='Build dependencies with support for CUDA')
 
     depends_on("boost+graph@1.53.0,1.59.0:")
+    depends_on(Boost.sensible_default_spec)
     depends_on("py-pyyaml")
     depends_on("libxml2@2.9.1:")
     depends_on("yaml-cpp")

@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Wt(CMakePackage):
@@ -43,6 +44,7 @@ class Wt(CMakePackage):
 
     depends_on('pkgconfig', type='build')
     depends_on('boost@1.46.1:1.65')
+    depends_on(Boost.sensible_default_spec)
     depends_on('openssl', when='+openssl')
     depends_on('libharu', when='+libharu')
     depends_on('sqlite', when='+sqlite')

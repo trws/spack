@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 import glob
 
 
@@ -26,7 +27,7 @@ class Augustus(MakefilePackage):
     depends_on('perl', type=('build', 'run'))
     depends_on('bamtools')
     depends_on('gsl')
-    depends_on('boost')
+    depends_on(Boost.sensible_default_spec)
     depends_on('zlib')
     depends_on('htslib', when='@3.3.1:')
     depends_on('bcftools', when='@3.3.1:')

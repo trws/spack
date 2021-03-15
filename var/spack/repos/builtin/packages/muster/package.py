@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Muster(CMakePackage):
@@ -19,6 +20,6 @@ class Muster(CMakePackage):
     version('1.0.1', sha256='71e2fcdd7abf7ae5cc648a5f310e1c5369e4889718eab2a045e747c590d2dd71')
     version('1.0',   sha256='370a670419e391494fcca0294882ee5f83c5d8af94ca91ac4182235332bd56d6')
 
-    depends_on('boost')
+    depends_on(Boost.sensible_default_spec)
     depends_on('mpi')
     depends_on('cmake@2.8:', type='build')

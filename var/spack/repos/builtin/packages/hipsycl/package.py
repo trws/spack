@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 from os import path
 import json
 from llnl.util import filesystem
@@ -36,6 +37,7 @@ class Hipsycl(CMakePackage):
 
     depends_on("cmake@3.5:", type="build")
     depends_on("boost +filesystem")
+    depends_on(Boost.sensible_default_spec)
     depends_on("python@3:")
     depends_on("llvm@8: +clang", when="~cuda")
     depends_on("llvm@9: +clang", when="+cuda")

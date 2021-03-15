@@ -6,6 +6,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Fairlogger(CMakePackage):
@@ -48,6 +49,7 @@ class Fairlogger(CMakePackage):
     depends_on('git', type='build', when='@develop')
 
     depends_on('boost', when='+pretty')
+    depends_on(Boost.sensible_default_spec, when='+pretty')
     conflicts('^boost@1.70:', when='^cmake@:3.14')
     depends_on('fmt@5.3.0:5.99', when='@1.6.0:1.6.1')
     depends_on('fmt@5.3.0:', when='@1.6.2:')

@@ -3,6 +3,7 @@
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 from spack import *
+from spack.pkg.builtin.boost import Boost
 import os
 import tempfile
 
@@ -108,6 +109,8 @@ class Mysql(CMakePackage):
     depends_on('boost@1.59.0 cxxstd=11', when='@5.7.0:5.7.999 cxxstd=11')
     depends_on('boost@1.59.0 cxxstd=14', when='@5.7.0:5.7.999 cxxstd=14')
     depends_on('boost@1.59.0 cxxstd=17', when='@5.7.0:5.7.999 cxxstd=17')
+
+    depends_on(Boost.sensible_default_spec, when='@5.7:')
 
     depends_on('rpcsvc-proto')
     depends_on('ncurses')

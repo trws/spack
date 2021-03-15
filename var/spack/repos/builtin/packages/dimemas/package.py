@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Dimemas(AutotoolsPackage):
@@ -22,6 +23,7 @@ class Dimemas(AutotoolsPackage):
     depends_on('bison', type=('build', 'link', 'run'))
     depends_on('flex', type=('build', 'link', 'run'))
     depends_on('boost@1.65.0+program_options cxxstd=11', type=('build', 'link'))
+    depends_on(Boost.sensible_default_spec, type=('build', 'link'))
 
     def autoreconf(self, spec, prefix):
         autoreconf('--install', '--verbose', '--force')

@@ -5,6 +5,7 @@
 
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Parsplice(CMakePackage):
@@ -24,6 +25,7 @@ class Parsplice(CMakePackage):
     depends_on("berkeley-db")
     depends_on("nauty")
     depends_on("boost cxxstd=11")
+    depends_on(Boost.sensible_default_spec)
     depends_on("mpi")
     depends_on("eigen@3:")
     depends_on("lammps+lib@20170901:")

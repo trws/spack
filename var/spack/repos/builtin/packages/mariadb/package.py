@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Mariadb(CMakePackage):
@@ -35,7 +36,7 @@ class Mariadb(CMakePackage):
     provides('mariadb-client')
     provides('mysql-client')
 
-    depends_on('boost')
+    depends_on(Boost.sensible_default_spec)
     depends_on('cmake@2.6:', type='build')
     depends_on('pkgconfig', type='build')
     depends_on('bison', type='build')

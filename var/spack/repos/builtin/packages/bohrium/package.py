@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 from spack.package_test import compare_output
 from spack.util.executable import Executable
 import llnl.util.tty as tty
@@ -71,6 +72,7 @@ class Bohrium(CMakePackage, CudaPackage):
     #
     depends_on('cmake@2.8:', type="build")
     depends_on('boost+system+serialization+filesystem+regex')
+    depends_on(Boost.sensible_default_spec)
 
     # cuda dependencies managed by CudaPackage class
     depends_on('opencl', when="+opencl")

@@ -3,6 +3,7 @@
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Polymake(Package):
@@ -16,7 +17,7 @@ class Polymake(Package):
 
     # Note: Could also be built with nauty instead of bliss
     depends_on("bliss")
-    depends_on("boost")
+    depends_on(Boost.sensible_default_spec)
     depends_on("cddlib")
     depends_on("gmp")
     depends_on("lrslib")

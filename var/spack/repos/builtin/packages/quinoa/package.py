@@ -5,6 +5,7 @@
 
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Quinoa(CMakePackage):
@@ -22,7 +23,7 @@ class Quinoa(CMakePackage):
     depends_on('hdf5+mpi')
     depends_on("charmpp backend=mpi")
     depends_on("trilinos+exodus")
-    depends_on("boost")
+    depends_on(Boost.sensible_default_spec)
     depends_on("hypre~internal-superlu")
     depends_on("random123")
     depends_on("netlib-lapack+lapacke")

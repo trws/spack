@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Acts(CMakePackage, CudaPackage):
@@ -120,6 +121,7 @@ class Acts(CMakePackage, CudaPackage):
     # FIXME: Use spack's autodiff package once there is one
     depends_on('boost @1.62:1.69.99 +program_options +test', when='@:0.10.3')
     depends_on('boost @1.71: +filesystem +program_options +test', when='@0.10.4:')
+    depends_on(Boost.sensible_default_spec)
     depends_on('cmake @3.14:', type='build')
     depends_on('dd4hep @1.11:', when='+dd4hep')
     depends_on('dd4hep @1.11: +geant4', when='+dd4hep +geant4')

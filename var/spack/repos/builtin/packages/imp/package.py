@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Imp(CMakePackage):
@@ -17,5 +18,6 @@ class Imp(CMakePackage):
     depends_on('python@2.7:')
     depends_on('swig')
     depends_on('boost@1.40:')
+    depends_on(Boost.sensible_default_spec)
     depends_on('hdf5')
     depends_on('eigen')

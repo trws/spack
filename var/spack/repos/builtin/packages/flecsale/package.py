@@ -5,6 +5,7 @@
 
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Flecsale(CMakePackage):
@@ -26,6 +27,7 @@ class Flecsale(CMakePackage):
     depends_on("openssl")
     depends_on("boost~mpi", when='~mpi')
     depends_on("boost+mpi", when='+mpi')
+    depends_on(Boost.sensible_default_spec)
     depends_on("exodusii~mpi", when='~mpi')
     depends_on("exodusii+mpi", when='+mpi')
 

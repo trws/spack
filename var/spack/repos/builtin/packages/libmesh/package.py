@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Libmesh(AutotoolsPackage):
@@ -79,6 +80,7 @@ class Libmesh(AutotoolsPackage):
               'variant.')
 
     depends_on('boost', when='+boost')
+    depends_on(Boost.sensible_default_spec, when='+boost')
     depends_on('eigen', when='+eigen')
     depends_on('hdf5+mpi', when='+hdf5+mpi')
     depends_on('mpi', when='+mpi')

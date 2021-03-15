@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 import os
 
 
@@ -19,7 +20,7 @@ class Blasr(Package):
     depends_on('hdf5+cxx@1.8.12:1.8.99')
     depends_on('htslib')
     depends_on('zlib')
-    depends_on('boost')
+    depends_on(Boost.sensible_default_spec)
     depends_on('pbbam')
     depends_on('blasr-libcpp')
     depends_on('python', type='build')

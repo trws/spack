@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Spot(AutotoolsPackage):
@@ -22,3 +23,4 @@ class Spot(AutotoolsPackage):
     depends_on("python@3.2:", when='@1.99: +python')
     depends_on("python@2:", when='+python')
     depends_on('boost', when='@:1.2.6')
+    depends_on(Boost.sensible_default_spec, when='@:1.2.6')

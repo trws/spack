@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class _3dtk(CMakePackage):
@@ -38,6 +39,7 @@ class _3dtk(CMakePackage):
     depends_on('cmake@2.6.1:2.999', when='@1.2', type='build')
     depends_on('ninja', type='build')
     depends_on('boost+serialization+graph+regex+filesystem+system+thread+date_time+program_options')
+    depends_on(Boost.sensible_default_spec)
     depends_on('suite-sparse')
     depends_on('zlib')
     depends_on('libpng')

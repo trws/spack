@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Ecflow(CMakePackage):
@@ -30,6 +31,7 @@ class Ecflow(CMakePackage):
     # Boost-1.7X release not working well on serialization
     depends_on('boost@1.53:1.69+python')
     depends_on('boost@1.53:1.69+pic', when='+static_boost')
+    depends_on(Boost.sensible_default_spec)
     depends_on('qt@5:', when='+ui')
     depends_on('cmake@2.12.11:', type='build')
 

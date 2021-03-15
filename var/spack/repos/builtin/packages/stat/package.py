@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Stat(AutotoolsPackage):
@@ -54,7 +55,7 @@ class Stat(AutotoolsPackage):
     depends_on('py-xdot@1.0', when='@4.0.1:')
     depends_on('swig')
     depends_on('mpi', when='+examples')
-    depends_on('boost')
+    depends_on(Boost.sensible_default_spec)
 
     patch('configure_mpicxx.patch', when='@2.1.0')
 

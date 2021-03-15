@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Ibmisc(CMakePackage):
@@ -45,6 +46,7 @@ class Ibmisc(CMakePackage):
     depends_on('py-cython', when='+python', type=('build', 'run'))
     depends_on('py-numpy', when='+python', type=('build', 'run'))
     depends_on('boost', when='+boost')
+    depends_on(Boost.sensible_default_spec, when='+boost')
 
     # Build dependencies
     depends_on('doxygen', type='build')

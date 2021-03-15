@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Ns3Dev(WafPackage):
@@ -28,7 +29,7 @@ class Ns3Dev(WafPackage):
 
     # Build dependency
     depends_on('helics', when='+helics')
-    depends_on('boost', when='+boost')
+    depends_on(Boost.sensible_default_spec, when='+boost')
     depends_on('pkgconfig', type='build')
 
     resource(name='helics',

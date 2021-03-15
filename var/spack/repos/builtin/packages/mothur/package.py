@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Mothur(MakefilePackage):
@@ -21,7 +22,7 @@ class Mothur(MakefilePackage):
 
     variant('vsearch', default=False,  description='Use vsearch')
 
-    depends_on('boost')
+    depends_on(Boost.sensible_default_spec)
     depends_on('readline')
     depends_on('vsearch@2.13.3',  when='+vsearch', type='run')
 

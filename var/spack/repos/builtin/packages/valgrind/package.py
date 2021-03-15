@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 import glob
 import sys
 
@@ -49,6 +50,7 @@ clang: error: unknown argument: '-static-libubsan'
 """)
     depends_on('mpi', when='+mpi')
     depends_on('boost', when='+boost')
+    depends_on(Boost.sensible_default_spec, when='+boost')
 
     depends_on("autoconf", type='build', when='@develop')
     depends_on("automake", type='build', when='@develop')

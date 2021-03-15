@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class AdolC(AutotoolsPackage):
@@ -44,6 +45,7 @@ class AdolC(AutotoolsPackage):
 
     # Link dependencies
     depends_on('boost+system', when='+boost')
+    depends_on(Boost.sensible_default_spec)
 
     # FIXME: add
     #  --with-colpack=DIR      path to the colpack library and headers

@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Channelflow(CMakePackage):
@@ -39,6 +40,7 @@ class Channelflow(CMakePackage):
 
     # Python bindings
     depends_on('boost+python', when='+python')
+    depends_on(Boost.sensible_default_spec, when='+python')
 
     conflicts('~mpi', when='netcdf=parallel', msg='Parallel NetCDF requires MPI')
     conflicts(

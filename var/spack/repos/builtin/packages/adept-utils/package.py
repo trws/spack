@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class AdeptUtils(CMakePackage):
@@ -16,5 +17,6 @@ class AdeptUtils(CMakePackage):
     version('1.0',   sha256='fed29366c9bcf5f3799220ae3b351d2cb338e2aa42133d61584ea650aa8d6ff7')
 
     depends_on('boost@:1.72.0')
+    depends_on(Boost.sensible_default_spec)
     depends_on('mpi')
     depends_on('cmake@2.8:', type='build')

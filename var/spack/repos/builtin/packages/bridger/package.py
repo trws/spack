@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 from os import symlink
 
 
@@ -16,7 +17,7 @@ class Bridger(MakefilePackage, SourceforgePackage):
 
     version('2014-12-01', sha256='8fbec8603ea8ad2162cbd0c658e4e0a4af6453bdb53310b4b7e0d112e40b5737')
 
-    depends_on('boost')
+    depends_on(Boost.sensible_default_spec)
     depends_on('perl', type='run')
 
     def install(self, spec, prefix):

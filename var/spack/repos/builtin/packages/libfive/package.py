@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Libfive(CMakePackage):
@@ -18,6 +19,7 @@ class Libfive(CMakePackage):
     depends_on('pkgconfig', type='build')
     depends_on('cmake@3.3:', type='build')
     depends_on('boost@1.65:')
+    depends_on(Boost.sensible_default_spec)
     depends_on('eigen@3.3.0:')
     depends_on('libpng')
     depends_on('qt@5.7:')

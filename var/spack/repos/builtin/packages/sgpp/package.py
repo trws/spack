@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Sgpp(SConsPackage):
@@ -98,6 +99,7 @@ class Sgpp(SConsPackage):
     depends_on('mpi', when='+mpi', type=('build', 'run'))
     # Testing requires boost test
     depends_on('boost+test', type=('test'))
+    depends_on(Boost.sensible_default_spec, type=('test'))
 
     # Compiler with C++11 support is required
     conflicts('%gcc@:4.8.4', msg='Compiler with c++11 support is required!')

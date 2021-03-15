@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 import sys
 
 
@@ -84,6 +85,7 @@ class NaluWind(CMakePackage, CudaPackage):
     depends_on('fftw+mpi', when='+fftw')
 
     depends_on('boost cxxstd=14', when='+boost')
+    depends_on(Boost.sensible_default_spec, when='+boost')
 
     conflicts('+cuda', when='+shared')
 

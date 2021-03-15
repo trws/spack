@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Openimageio(CMakePackage):
@@ -19,6 +20,7 @@ class Openimageio(CMakePackage):
     # Core dependencies
     depends_on('cmake@3.2.2:', type='build')
     depends_on('boost@1.53:', type=('build', 'link'))
+    depends_on(Boost.sensible_default_spec, type=('build', 'link'))
     depends_on('libtiff@4.0:', type=('build', 'link'))
     depends_on('openexr@2.3:', type=('build', 'link'))
     depends_on('libpng@1.6:', type=('build', 'link'))

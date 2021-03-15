@@ -3,6 +3,7 @@
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Mercury(CMakePackage):
@@ -49,7 +50,9 @@ class Mercury(CMakePackage):
     depends_on('libfabric@1.5:', when='+ofi')
     depends_on('openpa@1.0.3:', when='%gcc@:4.8')
     depends_on('boost@1.48:', when='+boostsys')
+    depends_on(Boost.sensible_default_spec, when='+boostsys')
     depends_on('boost', when='@:0.9')  # internal boost headers were added in 1.0.0
+    depends_on(Boost.sensible_default_spec, when='@:0.9')
 
     conflicts('+ofi', when='@:0.9')    # libfabric support was added in 1.0.0
     conflicts('~ofi', when='+udreg')   # udreg option is specific to OFI

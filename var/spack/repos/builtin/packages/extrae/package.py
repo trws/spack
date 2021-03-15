@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 # typical working line with extrae 3.0.1
 # ./configure
@@ -45,7 +46,7 @@ class Extrae(AutotoolsPackage):
 
     depends_on("mpi")
     depends_on("libunwind")
-    depends_on("boost")
+    depends_on(Boost.sensible_default_spec)
     depends_on("libdwarf")
     depends_on("papi")
     depends_on("elf", type="link")

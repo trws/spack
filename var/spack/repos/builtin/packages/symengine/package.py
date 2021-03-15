@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 import sys
 
 
@@ -49,6 +50,7 @@ class Symengine(CMakePackage):
     # NOTE: mpir is a drop-in replacement for gmp
     # NOTE: [mpc,mpfr,flint,piranha] could also be built against mpir
     depends_on('boost',    when='+boostmp')
+    depends_on(Boost.sensible_default_spec, when='+boostmp')
     depends_on('gmp',      when='~boostmp')
     depends_on('llvm',     when='+llvm')
     depends_on('mpc',      when='+mpc~boostmp')

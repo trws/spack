@@ -5,6 +5,7 @@
 
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Pktools(CMakePackage):
@@ -23,7 +24,7 @@ class Pktools(CMakePackage):
     depends_on('gsl')
     depends_on('armadillo')
     depends_on('nlopt')
-    depends_on('boost')
+    depends_on(Boost.sensible_default_spec)
     depends_on('fann', when='+fann')
     depends_on('liblas', when='+liblas')
 

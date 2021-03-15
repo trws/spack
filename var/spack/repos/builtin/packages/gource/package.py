@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Gource(AutotoolsPackage):
@@ -23,6 +24,7 @@ class Gource(AutotoolsPackage):
     depends_on('freetype@2.0:')
     depends_on('pcre')
     depends_on('boost@1.46:+filesystem+system')
+    depends_on(Boost.sensible_default_spec)
     depends_on('glew')
     depends_on('jpeg')
     depends_on('libpng')

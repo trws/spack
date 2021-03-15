@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Denovogear(CMakePackage):
@@ -20,6 +21,7 @@ class Denovogear(CMakePackage):
 
     depends_on('cmake@3.1:', type=('build'))
     depends_on('boost@1.47:1.60', type=('build'))
+    depends_on(Boost.sensible_default_spec, type=('build'))
     depends_on('htslib@1.2:', type=('build'))
     depends_on('eigen', type=('build'))
     depends_on('zlib', type=('link'))

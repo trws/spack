@@ -45,6 +45,7 @@ import re
 import os
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 from spack.util.environment import EnvironmentModifications
 import llnl.util.tty as tty
 
@@ -315,7 +316,7 @@ class Openfoam(Package):
 
     depends_on('zlib')
     depends_on('fftw-api')
-    depends_on('boost')
+    depends_on(Boost.sensible_default_spec)
     depends_on('cgal')
     # The flex restriction is ONLY to deal with a spec resolution clash
     # introduced by the restriction within scotch!

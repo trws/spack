@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Apex(CMakePackage):
@@ -16,6 +17,7 @@ class Apex(CMakePackage):
 
     depends_on("binutils+libiberty@:2.33.1")
     depends_on("boost@1.54:")
+    depends_on(Boost.sensible_default_spec)
     depends_on('cmake@2.8.12:', type='build')
     depends_on("activeharmony@4.5:")
     depends_on("ompt-openmp")

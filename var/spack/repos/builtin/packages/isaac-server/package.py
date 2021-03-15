@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class IsaacServer(CMakePackage):
@@ -34,6 +35,7 @@ class IsaacServer(CMakePackage):
     depends_on('jansson@:2.9', type='link', when='@:1.5.1')
     depends_on('jansson', type='link')
     depends_on('boost@1.56.0:', type='link')
+    depends_on(Boost.sensible_default_spec, type='link')
     depends_on('libwebsockets@2.1.1:', type='link')
     # depends_on('gstreamer@1.0', when='+gstreamer')
 

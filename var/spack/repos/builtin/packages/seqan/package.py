@@ -5,6 +5,7 @@
 
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Seqan(CMakePackage):
@@ -25,6 +26,7 @@ class Seqan(CMakePackage):
     depends_on('py-nose', type='build')
     depends_on('py-sphinx', type='build')
     depends_on('boost', type=('build', 'link'))
+    depends_on(Boost.sensible_default_spec)
     depends_on('zlib', type=('build', 'link'))
     depends_on('bzip2', type=('build', 'link'))
 

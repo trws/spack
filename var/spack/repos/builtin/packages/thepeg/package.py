@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Thepeg(AutotoolsPackage):
@@ -66,6 +67,7 @@ class Thepeg(AutotoolsPackage):
     depends_on('fastjet', when='@2.0.0:')
     depends_on('rivet', when='@2.0.3:')
     depends_on('boost', when='@2.1.1:')
+    depends_on(Boost.sensible_default_spec)
 
     depends_on('autoconf', type='build')
     depends_on('automake', type='build')

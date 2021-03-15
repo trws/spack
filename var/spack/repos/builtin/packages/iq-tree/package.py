@@ -5,6 +5,7 @@
 
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class IqTree(CMakePackage):
@@ -25,7 +26,7 @@ class IqTree(CMakePackage):
 
     # Depends on Eigen3 and zlib
 
-    depends_on("boost")
+    depends_on(Boost.sensible_default_spec)
     depends_on("eigen")
     depends_on("zlib")
     depends_on('mpi', when='+mpi')

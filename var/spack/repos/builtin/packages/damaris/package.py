@@ -5,6 +5,7 @@
 
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Damaris(CMakePackage):
@@ -26,6 +27,7 @@ class Damaris(CMakePackage):
     depends_on('mpi')
     depends_on('cmake@3.12.0:', type=('build'))
     depends_on('boost +thread+log+filesystem+date_time @1.67:')
+    depends_on(Boost.sensible_default_spec)
     depends_on('xsd')
     depends_on('xerces-c')
     depends_on('hdf5@1.8.20:', when='+hdf5')

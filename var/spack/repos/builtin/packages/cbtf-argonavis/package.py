@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class CbtfArgonavis(CMakePackage):
@@ -39,6 +40,7 @@ class CbtfArgonavis(CMakePackage):
 
     # For boost
     depends_on("boost@1.66.0:1.69.0")
+    depends_on(Boost.sensible_default_spec)
 
     # For MRNet
     depends_on("mrnet@5.0.1-3:+cti", when='@develop+cti', type=('build', 'link', 'run'))

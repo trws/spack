@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 import os
 
 
@@ -25,6 +26,7 @@ class Psi4(CMakePackage):
     depends_on('blas')
     depends_on('lapack')
     depends_on('boost+chrono+filesystem+python+regex+serialization+system+timer+thread')
+    depends_on(Boost.sensible_default_spec)
     depends_on('python')
     depends_on('cmake@3.3:', type='build')
     depends_on('py-numpy', type=('build', 'run'))

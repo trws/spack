@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Gplates(CMakePackage):
@@ -36,6 +37,7 @@ class Gplates(CMakePackage):
     # Boost's Python library has a different name starting with 1.67.
     # There were changes to Boost's optional in 1.61 that make the build fail.
     depends_on('boost+python@1.34:1.60')
+    depends_on(Boost.sensible_default_spec)
     depends_on('python@2:2.99')
 
     # When built in parallel, headers are not generated before they are used

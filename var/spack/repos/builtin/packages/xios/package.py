@@ -5,6 +5,7 @@
 
 #
 from spack import *
+from spack.pkg.builtin.boost import Boost
 import os
 
 
@@ -38,7 +39,7 @@ class Xios(Package):
     depends_on('netcdf-fortran')
     depends_on('hdf5+mpi')
     depends_on('mpi')
-    depends_on('boost')
+    depends_on(Boost.sensible_default_spec)
     depends_on('blitz')
     depends_on('perl', type='build')
     depends_on('perl-uri', type='build')

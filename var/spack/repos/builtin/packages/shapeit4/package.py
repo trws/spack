@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Shapeit4(MakefilePackage):
@@ -18,7 +19,7 @@ class Shapeit4(MakefilePackage):
     maintainers = ['ilbiondo']
 
     depends_on('htslib')
-    depends_on('boost')
+    depends_on(Boost.sensible_default_spec)
     depends_on('bzip2')
     depends_on('xz')
 

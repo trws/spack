@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Mrnet(AutotoolsPackage):
@@ -24,7 +25,7 @@ class Mrnet(AutotoolsPackage):
             description="Also build the MRNet LW threadsafe libraries")
     parallel = False
 
-    depends_on("boost")
+    depends_on(Boost.sensible_default_spec)
 
     def configure_args(self):
         spec = self.spec

@@ -3,6 +3,8 @@
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
+from spack.pkg.builtin.boost import Boost
+
 
 class Kicad(CMakePackage):
     """KiCad is an open source software suite for Electronic Design
@@ -24,6 +26,7 @@ class Kicad(CMakePackage):
     depends_on('gl')
     depends_on('glm')
     depends_on('boost@1.56:')
+    depends_on(Boost.sensible_default_spec)
     depends_on('oce+X11')
     depends_on('swig', type='build')
     depends_on('curl')

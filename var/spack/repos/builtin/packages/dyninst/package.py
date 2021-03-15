@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 import os.path
 
 
@@ -40,6 +41,7 @@ class Dyninst(CMakePackage):
 
     depends_on('boost@1.61.0:' + boost_libs, when='@10.1.0:')
     depends_on('boost@1.61.0:1.69.99' + boost_libs, when='@:10.0.99')
+    depends_on(Boost.sensible_default_spec)
     depends_on('libiberty+pic')
 
     # Dyninst uses elfutils starting with 9.3.0, and used libelf

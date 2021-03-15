@@ -5,6 +5,7 @@
 
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Highfive(CMakePackage):
@@ -23,6 +24,7 @@ class Highfive(CMakePackage):
     variant('mpi', default=True, description='Support MPI')
 
     depends_on('boost @1.41:', when='+boost')
+    depends_on(Boost.sensible_default_spec, when='+boost')
     depends_on('hdf5')
     depends_on('hdf5 +mpi', when='+mpi')
 

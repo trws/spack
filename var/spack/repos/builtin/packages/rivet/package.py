@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 import os
 
 
@@ -107,6 +108,7 @@ class Rivet(AutotoolsPackage):
     depends_on('hepmc',  type=('build', 'run'), when='hepmc=2')
     depends_on('hepmc3', type=('build', 'run'), when='hepmc=3')
     depends_on('boost', when='@:2.5.0', type=('build', 'run'))
+    depends_on(Boost.sensible_default_spec, when='@:2.5.0', type=('build', 'run'))
     depends_on('fastjet', type=('build', 'run'))
     depends_on('fjcontrib', type=('build', 'run'), when='@3.0.0:')
     depends_on('gsl', type=('build', 'run'), when='@:2.6.0,2.6.2:2.99.99')

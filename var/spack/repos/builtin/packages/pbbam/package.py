@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Pbbam(CMakePackage):
@@ -19,6 +20,7 @@ class Pbbam(CMakePackage):
 
     depends_on('zlib')
     depends_on('boost@1.55.0:')
+    depends_on(Boost.sensible_default_spec)
     depends_on('htslib@1.3.1:')
     depends_on('doxygen+graphviz')
 

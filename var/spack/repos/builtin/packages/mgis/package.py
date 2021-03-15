@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Mgis(CMakePackage):
@@ -55,6 +56,7 @@ class Mgis(CMakePackage):
     depends_on('tfel@rliv-3.2', when="@rliv-1.0")
     depends_on('tfel@master', when="@master")
     depends_on('boost+python+numpy', when='+python')
+    depends_on(Boost.sensible_default_spec, when='+python')
     extends('python', when='+python')
 
     def cmake_args(self):

@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Simgrid(CMakePackage):
@@ -44,7 +45,7 @@ class Simgrid(CMakePackage):
     variant('mc', default=False, description='Model checker')
 
     # does not build correctly with some old compilers -> rely on packages
-    depends_on('boost')
+    depends_on(Boost.sensible_default_spec)
 
     def setup_dependent_package(self, module, dep_spec):
 

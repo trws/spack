@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Launchmon(AutotoolsPackage):
@@ -24,7 +25,7 @@ class Launchmon(AutotoolsPackage):
     depends_on('libgcrypt')
     depends_on('libgpg-error')
     depends_on("elf", type='link')
-    depends_on("boost")
+    depends_on(Boost.sensible_default_spec)
     depends_on("spectrum-mpi", when='arch=ppc64le')
 
     patch('launchmon-char-conv.patch', when='@1.0.2')

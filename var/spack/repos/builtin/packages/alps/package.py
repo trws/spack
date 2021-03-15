@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Alps(CMakePackage):
@@ -24,6 +25,7 @@ class Alps(CMakePackage):
 
     # Package failed to build with boost version >= 1.64
     depends_on('boost@:1.63.0 +chrono +date_time +filesystem +iostreams +mpi +numpy +program_options +python +regex +serialization +system +test +thread +timer')
+    depends_on(Boost.sensible_default_spec)
     depends_on('fftw')
     depends_on('hdf5 ~mpi+hl')
     depends_on('lapack')

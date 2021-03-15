@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Samrai(AutotoolsPackage):
@@ -49,6 +50,7 @@ class Samrai(AutotoolsPackage):
     depends_on('hdf5+mpi')
     depends_on('m4', type='build')
     depends_on('boost@:1.64.0', when='@3.0.0:3.11.99', type='build')
+    depends_on(Boost.sensible_default_spec, when='@3.0.0:3.11.99', type='build')
     depends_on('silo+mpi', when='+silo')
 
     # don't build SAMRAI 3+ with tools with gcc

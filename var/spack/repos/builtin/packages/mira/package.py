@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Mira(AutotoolsPackage):
@@ -16,6 +17,7 @@ class Mira(AutotoolsPackage):
     version('4.0.2', sha256='a32cb2b21e0968a5536446287c895fe9e03d11d78957554e355c1080b7b92a80')
 
     depends_on('boost@1.46:')
+    depends_on(Boost.sensible_default_spec)
     depends_on('expat@2.0.1:')
     depends_on('gperftools')
 

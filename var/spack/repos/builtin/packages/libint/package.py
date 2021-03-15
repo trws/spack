@@ -5,6 +5,7 @@
 
 import os
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 TUNE_VARIANTS = (
@@ -49,7 +50,7 @@ class Libint(AutotoolsPackage):
     depends_on('libtool', type='build')
 
     # Libint 2 dependencies
-    depends_on('boost', when='@2:')
+    depends_on(Boost.sensible_default_spec, when='@2:')
     depends_on('gmp', when='@2:')
 
     for tvariant in TUNE_VARIANTS[1:]:

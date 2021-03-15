@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Foundationdb(CMakePackage):
@@ -24,7 +25,7 @@ class Foundationdb(CMakePackage):
 
     depends_on('cmake@3.13.0:', type='build')
     depends_on('mono')
-    depends_on('boost')
+    depends_on(Boost.sensible_default_spec)
     generator = 'Ninja'
     depends_on('ninja', type='build')
 

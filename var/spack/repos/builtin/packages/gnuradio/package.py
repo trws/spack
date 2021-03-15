@@ -4,6 +4,9 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 
+from spack.pkg.builtin.boost import Boost
+
+
 class Gnuradio(CMakePackage):
     """GNU Radio is a free & open-source software development toolkit
     that provides signal processing blocks to implement software
@@ -30,6 +33,7 @@ class Gnuradio(CMakePackage):
     depends_on('log4cpp@1.0:')
     # https://github.com/gnuradio/gnuradio/pull/3566
     depends_on('boost@1.53:1.72.999')
+    depends_on(Boost.sensible_default_spec)
     depends_on('py-numpy', type=('build', 'run'))
     depends_on('py-click', type=('build', 'run'))
     depends_on('py-pyyaml', type=('build', 'run'))

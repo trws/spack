@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Revbayes(CMakePackage):
@@ -23,7 +24,7 @@ class Revbayes(CMakePackage):
 
     variant('mpi', default=True, description='Enable MPI parallel support')
 
-    depends_on('boost')
+    depends_on(Boost.sensible_default_spec)
     depends_on('mpi', when='+mpi')
 
     conflicts('%gcc@7.1.0:', when='@:1.0.12')

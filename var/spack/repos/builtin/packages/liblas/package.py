@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Liblas(CMakePackage):
@@ -26,6 +27,7 @@ class Liblas(CMakePackage):
 
     depends_on('libgeotiff')
     depends_on('boost@:1.69.0')
+    depends_on(Boost.sensible_default_spec)
     depends_on('laszip', when='+laszip')
     depends_on('gdal', when='+gdal')
 

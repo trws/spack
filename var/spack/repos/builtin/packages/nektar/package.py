@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Nektar(CMakePackage):
@@ -28,6 +29,7 @@ class Nektar(CMakePackage):
     depends_on('blas')
     depends_on('lapack')
     depends_on('boost@1.56.0: +iostreams')
+    depends_on(Boost.sensible_default_spec)
     depends_on('tinyxml', when='platform=darwin')
 
     depends_on('mpi', when='+mpi')

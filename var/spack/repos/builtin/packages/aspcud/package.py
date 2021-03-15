@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Aspcud(CMakePackage):
@@ -22,6 +23,7 @@ class Aspcud(CMakePackage):
     version('1.9.4', sha256='3645f08b079e1cc80e24cd2d7ae5172a52476d84e3ec5e6a6c0034492a6ea885')
 
     depends_on('boost@1.74:', type=('build'), when='@1.9.5:')
+    depends_on(Boost.sensible_default_spec, type=('build'), when='@1.9.5:')
     depends_on('cmake', type=('build'))
     depends_on('re2c', type=('build'))
     depends_on('clingo')

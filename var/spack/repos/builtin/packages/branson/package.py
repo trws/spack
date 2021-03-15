@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Branson(CMakePackage):
@@ -25,7 +26,7 @@ class Branson(CMakePackage):
     version('0.8',  sha256='85ffee110f89be00c37798700508b66b0d15de1d98c54328b6d02a9eb2cf1cb8')
 
     depends_on('mpi@2:')
-    depends_on('boost', when='@:0.81')
+    depends_on(Boost.sensible_default_spec, when='@:0.81')
     depends_on('metis')
     depends_on('parmetis', when='@:0.81')
 

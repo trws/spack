@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Gearshifft(CMakePackage):
@@ -39,6 +40,7 @@ class Gearshifft(CMakePackage):
     # depends_on C++14 compiler, e.g. GCC 5.0+
     depends_on('cmake@2.8.0:', type='build')
     depends_on('boost@1.59.0:')
+    depends_on(Boost.sensible_default_spec)
     depends_on('cuda@8.0:', when='+cufft')
     depends_on('opencl@1.2:', when='+clfft')
     depends_on('clfft@2.12.0:', when='+clfft')

@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Isaac(CMakePackage):
@@ -36,6 +37,7 @@ class Isaac(CMakePackage):
     depends_on('jansson', type='link')
     depends_on('boost@1.56.0:', type='link')
     depends_on('boost@1.65.1:', type='link', when='^cuda@9:')
+    depends_on(Boost.sensible_default_spec, type='link')
     depends_on('cuda@7.0:', type='link', when='+cuda')
     # depends_on('alpaka@0.3', when='+alpaka')
     depends_on('icet', type='link')

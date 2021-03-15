@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Graphblast(MakefilePackage, CudaPackage):
@@ -18,6 +19,7 @@ class Graphblast(MakefilePackage, CudaPackage):
     variant('cuda', default=True, description="Build with Cuda support")
 
     depends_on('boost +program_options')
+    depends_on(Boost.sensible_default_spec)
 
     # This package is confirmed to compile with:
     #   gcc@:5.4.0,7.5.0 , boost@1.58.0:1.60.0 , cuda@9:

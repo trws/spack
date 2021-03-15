@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Masurca(Package):
@@ -19,7 +20,7 @@ class Masurca(Package):
     version('3.2.9', sha256='795ad4bd42e15cf3ef2e5329aa7e4f2cdeb7e186ce2e350a45127e319db2904b')
 
     depends_on('perl', type=('build', 'run'))
-    depends_on('boost')
+    depends_on(Boost.sensible_default_spec)
     depends_on('zlib')
     patch('arm.patch', when='target=aarch64:')
 

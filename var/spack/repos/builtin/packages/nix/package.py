@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Nix(AutotoolsPackage):
@@ -36,6 +37,7 @@ class Nix(AutotoolsPackage):
 
     depends_on('boost@1.66.0:+coroutine+context cxxstd=14', when='@2.2.0:')
     depends_on('boost@1.61.0:+coroutine+context cxxstd=14', when='@2.0.0:')
+    depends_on(Boost.sensible_default_spec, when='@2.0.0:')
     depends_on('brotli')
     depends_on('editline')
     depends_on('m4', type='build')

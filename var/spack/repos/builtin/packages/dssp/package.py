@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Dssp(AutotoolsPackage):
@@ -20,6 +21,7 @@ class Dssp(AutotoolsPackage):
     depends_on('libtool',  type='build')
     depends_on('m4',       type='build')
     depends_on('boost@1.48:')
+    depends_on(Boost.sensible_default_spec)
 
     # pdb data download.
     # 1ALK.pdb - PDB (protein data bank) : https://www.rcsb.org/

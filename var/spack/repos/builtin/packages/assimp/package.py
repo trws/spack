@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Assimp(CMakePackage):
@@ -21,7 +22,7 @@ class Assimp(CMakePackage):
     variant('shared',  default=True,
             description='Enables the build of shared libraries')
 
-    depends_on('boost')
+    depends_on(Boost.sensible_default_spec)
 
     def cmake_args(self):
         args = [

@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class TemplightTools(CMakePackage):
@@ -16,3 +17,4 @@ class TemplightTools(CMakePackage):
 
     depends_on('cmake @2.8.7:', type='build')
     depends_on('boost @1.48.1: +filesystem +graph +program_options +test')
+    depends_on(Boost.sensible_default_spec)

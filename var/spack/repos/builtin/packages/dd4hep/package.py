@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Dd4hep(CMakePackage):
@@ -58,6 +59,7 @@ class Dd4hep(CMakePackage):
     depends_on('cmake @3.12:', type='build')
     depends_on('ninja', type='build')
     depends_on('boost @1.49:')
+    depends_on(Boost.sensible_default_spec)
     depends_on('root @6.08: +gdml +math +opengl +python +x')
     extends('python')
     depends_on('xerces-c', when='+xercesc')

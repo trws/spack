@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 import os
 
 
@@ -29,7 +30,7 @@ class Cantera(SConsPackage):
     depends_on('fmt@3.0.0:3.0.2', when='@2.3.0:')
     depends_on('googletest+gmock', when='@2.3.0:')
     depends_on('eigen',           when='@2.3.0:')
-    depends_on('boost')
+    depends_on(Boost.sensible_default_spec)
     depends_on('sundials@:3.1.2+lapack', when='+sundials')  # must be compiled with -fPIC
     depends_on('blas')
     depends_on('lapack')

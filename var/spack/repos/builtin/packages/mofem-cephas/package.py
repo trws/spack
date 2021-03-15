@@ -5,6 +5,7 @@
 
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class MofemCephas(CMakePackage):
@@ -39,6 +40,7 @@ class MofemCephas(CMakePackage):
 
     depends_on("mpi")
     depends_on("boost@:1.68")
+    depends_on(Boost.sensible_default_spec)
     depends_on("parmetis")
     # Fixed version of hdf5, to remove some problems with dependent
     # packages, f.e. MED format

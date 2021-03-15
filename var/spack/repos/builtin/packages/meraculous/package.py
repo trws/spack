@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Meraculous(CMakePackage, SourceforgePackage):
@@ -19,6 +20,7 @@ class Meraculous(CMakePackage, SourceforgePackage):
 
     depends_on('perl', type=('build', 'run'))
     depends_on('boost@1.5.0:')
+    depends_on(Boost.sensible_default_spec)
     depends_on('gnuplot@3.7:')
     depends_on('perl-log-log4perl', type=('build', 'run'))
 

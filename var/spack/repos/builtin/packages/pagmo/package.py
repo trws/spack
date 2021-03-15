@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Pagmo(CMakePackage):
@@ -50,6 +51,7 @@ class Pagmo(CMakePackage):
     depends_on('boost+system+serialization+thread+python',           when='+python~gtop')
     depends_on('boost+system+serialization+thread+date_time',        when='~python+gtop')
     depends_on('boost+system+serialization+thread+python+date_time', when='+python+gtop')
+    depends_on(Boost.sensible_default_spec)
 
     depends_on('gsl@1.15:',       when='+gsl')
     depends_on('ipopt',           when='+ipopt')

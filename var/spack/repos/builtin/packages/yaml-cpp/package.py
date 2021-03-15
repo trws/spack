@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack.spec import ConflictsInSpecError
+from spack.pkg.builtin.boost import Boost
 
 
 yaml_cpp_tests_libcxx_error_msg = 'yaml-cpp tests incompatible with libc++'
@@ -30,6 +31,7 @@ class YamlCpp(CMakePackage):
             description='Build yaml-cpp tests using internal gtest')
 
     depends_on('boost@:1.66.99', when='@0.5.0:0.5.3')
+    depends_on(Boost.sensible_default_spec, when='@0.5.0:0.5.3')
 
     conflicts('%gcc@:4.7', when='@0.6.0:', msg="versions 0.6.0: require c++11 support")
     conflicts('%clang@:3.3.0', when='@0.6.0:', msg="versions 0.6.0: require c++11 support")

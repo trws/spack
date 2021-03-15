@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Cleverleaf(CMakePackage):
@@ -21,7 +22,7 @@ class Cleverleaf(CMakePackage):
 
     depends_on('samrai@3.8.0:')
     depends_on('hdf5+mpi')
-    depends_on('boost')
+    depends_on(Boost.sensible_default_spec)
     depends_on('cmake@3.1:', type='build')
 
     # The Fujitsu compiler requires the '--linkfortran'

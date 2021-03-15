@@ -3,6 +3,8 @@
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
+from spack.pkg.builtin.boost import Boost
+
 
 class Dbow2(CMakePackage):
     """DBoW2 is an improved version of the DBow library, an open source C++
@@ -17,6 +19,6 @@ class Dbow2(CMakePackage):
 
     depends_on('cmake@3.0:', type='build')
     depends_on('opencv+calib3d+core+features2d+highgui+imgproc')
-    depends_on('boost')
+    depends_on(Boost.sensible_default_spec)
     depends_on('dlib')
     depends_on('eigen', type='link')

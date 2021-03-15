@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 import sys
 
 
@@ -16,6 +17,7 @@ class AutodockVina(MakefilePackage):
     version('1_1_2', sha256='b86412d316960b1e4e319401719daf57ff009229d91654d623c3cf09339f6776')
 
     depends_on('boost@1.65.0')
+    depends_on(Boost.sensible_default_spec)
 
     # Replacing depecrated function call of boost with current function call
     patch('main.patch')

@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Herwigpp(AutotoolsPackage):
@@ -19,7 +20,7 @@ class Herwigpp(AutotoolsPackage):
     patch('herwig++-2.7.1.patch', when='@2.7.1', level=0)
 
     depends_on('gsl')
-    depends_on('boost')
+    depends_on(Boost.sensible_default_spec)
     depends_on('fastjet')
     depends_on('thepeg@1.9.2', when='@2.7.1')
 

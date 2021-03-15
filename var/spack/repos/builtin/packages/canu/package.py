@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Canu(MakefilePackage):
@@ -24,6 +25,7 @@ class Canu(MakefilePackage):
     depends_on('perl', type='run')
     # build fail when using boost@1.71.0:1.73.0 by canu@1.8:2.0
     depends_on('boost@:1.70.0')
+    depends_on(Boost.sensible_default_spec)
 
     build_directory = 'src'
     build_targets = ['clean']

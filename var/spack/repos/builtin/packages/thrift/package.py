@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Thrift(Package):
@@ -39,6 +40,7 @@ class Thrift(Package):
     depends_on('automake', type='build')
     depends_on('libtool', type='build')
     depends_on('boost@1.53:')
+    depends_on(Boost.sensible_default_spec)
     depends_on('bison', type='build')
     depends_on('flex', type='build')
     depends_on('openssl')

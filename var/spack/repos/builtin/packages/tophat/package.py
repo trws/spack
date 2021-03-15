@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Tophat(AutotoolsPackage):
@@ -25,6 +26,7 @@ class Tophat(AutotoolsPackage):
     depends_on('m4',       type='build')
 
     depends_on('boost@1.47:')
+    depends_on(Boost.sensible_default_spec)
     depends_on('bowtie2', type='run')
 
     parallel = False

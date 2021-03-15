@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Jali(CMakePackage):
@@ -31,7 +32,7 @@ class Jali(CMakePackage):
 
     depends_on('mpi')
 
-    depends_on('boost')
+    depends_on(Boost.sensible_default_spec)
 
     depends_on('mstk@3.3.5: +exodusii+parallel~use_markers partitioner=all', when='+mstk')
 

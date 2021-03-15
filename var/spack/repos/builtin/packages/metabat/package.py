@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Metabat(SConsPackage):
@@ -19,6 +20,7 @@ class Metabat(SConsPackage):
     version('2.11.2', sha256='9baf81b385e503e71792706237c308a21ff9177a3211c79057dcecf8434e9a67')
 
     depends_on('boost@1.55.0:', type=('build', 'run'))
+    depends_on(Boost.sensible_default_spec, type=('build', 'run'))
     depends_on('perl', type='run')
     depends_on('zlib', type='link')
     depends_on('ncurses', type='link')

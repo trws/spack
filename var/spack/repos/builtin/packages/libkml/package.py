@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Libkml(CMakePackage):
@@ -26,6 +27,7 @@ class Libkml(CMakePackage):
     # See DEPENDENCIES
     depends_on('cmake@2.8:', type='build')
     depends_on('boost@1.44.0:')
+    depends_on(Boost.sensible_default_spec)
     depends_on('expat@2.1.0:')
     depends_on('minizip@1.2.8:')
     depends_on('uriparser')

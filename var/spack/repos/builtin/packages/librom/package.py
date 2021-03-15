@@ -3,6 +3,8 @@
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
+from spack.pkg.builtin.boost import Boost
+
 
 class Librom(AutotoolsPackage):
     """libROM: library for computing large-scale reduced order models"""
@@ -20,7 +22,7 @@ class Librom(AutotoolsPackage):
     depends_on('perl')
     depends_on('graphviz')
     depends_on('doxygen')
-    depends_on('boost')
+    depends_on(Boost.sensible_default_spec)
 
     def configure_args(self):
         spec = self.spec

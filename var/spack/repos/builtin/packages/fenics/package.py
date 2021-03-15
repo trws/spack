@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Fenics(CMakePackage):
@@ -101,6 +102,8 @@ class Fenics(CMakePackage):
             depends_on('boost+filesystem+program_options+system+iostreams+timer+regex+chrono')
         else:
             depends_on('boost+filesystem+program_options+system+iostreams+timer+regex+chrono@1.68.0')
+
+    depends_on(Boost.sensible_default_spec)
 
     depends_on('mpi', when='+mpi')
     depends_on('hdf5+hl+fortran', when='+hdf5+petsc')

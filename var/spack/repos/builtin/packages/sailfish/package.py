@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Sailfish(CMakePackage):
@@ -15,4 +16,5 @@ class Sailfish(CMakePackage):
     version('0.10.1', sha256='a0d6d944382f2e07ffbfd0371132588e2f22bb846ecfc3d3435ff3d81b30d6c6')
 
     depends_on('boost@1.55:')
+    depends_on(Boost.sensible_default_spec)
     depends_on('tbb')

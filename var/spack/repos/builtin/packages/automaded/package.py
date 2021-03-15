@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Automaded(CMakePackage):
@@ -24,7 +25,7 @@ class Automaded(CMakePackage):
     version('1.0', sha256='600740cdd594cc6968c7bcb285d0829eb0ddbd5597c32c06c6ae5d9929a2625d')
 
     depends_on('mpi')
-    depends_on('boost')
+    depends_on(Boost.sensible_default_spec)
     depends_on('callpath')
     depends_on('cmake@2.8:', type='build')
 

@@ -6,6 +6,7 @@
 import os
 import sys
 from spack import *
+from spack.pkg.builtin.boost import Boost
 from spack.operating_systems.mac_os import macos_version
 from spack.pkg.builtin.kokkos import Kokkos
 
@@ -367,7 +368,7 @@ class Trilinos(CMakePackage, CudaPackage):
     # Everything should be compiled position independent (-fpic)
     depends_on('blas')
     depends_on('lapack')
-    depends_on('boost', when='+boost')
+    depends_on(Boost.sensible_default_spec, when='+boost')
     depends_on('glm', when='+glm')
     depends_on('hdf5+hl', when='+hdf5')
     depends_on('matio', when='+matio')

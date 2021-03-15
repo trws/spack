@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class PyPythonMapnik(PythonPackage):
@@ -20,6 +21,7 @@ class PyPythonMapnik(PythonPackage):
     depends_on('py-setuptools', type='build')
     depends_on('mapnik', type=('build', 'link', 'run'))
     depends_on('boost +python+thread')
+    depends_on(Boost.sensible_default_spec)
     # py-pycairo is need by mapnik.printing
     depends_on('py-pycairo', type=('build', 'run'))
 

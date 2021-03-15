@@ -6,6 +6,7 @@
 from glob import glob
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class NcbiToolkit(AutotoolsPackage):
@@ -23,6 +24,7 @@ class NcbiToolkit(AutotoolsPackage):
             description='Build debug versions of libs and apps')
 
     depends_on('boost@1.35.0:')
+    depends_on(Boost.sensible_default_spec)
     depends_on('bzip2')
     depends_on('jpeg')
     depends_on('libpng')

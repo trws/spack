@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Dysco(CMakePackage):
@@ -17,3 +18,4 @@ class Dysco(CMakePackage):
     depends_on('casacore')
     depends_on('gsl')
     depends_on('boost+date_time+python')
+    depends_on(Boost.sensible_default_spec)

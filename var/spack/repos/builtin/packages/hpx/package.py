@@ -5,6 +5,7 @@
 
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 import sys
 
 
@@ -96,6 +97,8 @@ class Hpx(CMakePackage, CudaPackage):
     depends_on('boost cxxstd=11', when='cxxstd=11')
     depends_on('boost cxxstd=14', when='cxxstd=14')
     depends_on('boost cxxstd=17', when='cxxstd=17')
+
+    depends_on(Boost.sensible_default_spec)
 
     # Malloc
     depends_on('gperftools', when='malloc=tcmalloc')

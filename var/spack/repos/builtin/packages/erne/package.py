@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Erne(AutotoolsPackage):
@@ -18,6 +19,7 @@ class Erne(AutotoolsPackage):
             description='Build with OpenMPI support')
 
     depends_on('boost@1.40.0:', type=('build', 'link', 'run'))
+    depends_on(Boost.sensible_default_spec, type=('build', 'link', 'run'))
     depends_on('openmpi', type=('build', 'run'), when='+mpi')
 
     def configure_args(self):

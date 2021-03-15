@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Flecsph(CMakePackage):
@@ -23,6 +24,7 @@ class Flecsph(CMakePackage):
 
     depends_on('cmake@3.15:', type='build')
     depends_on('boost@1.70.0: cxxstd=14 +program_options')
+    depends_on(Boost.sensible_default_spec)
     depends_on('mpi')
     depends_on('hdf5+hl@1.8:')
     depends_on('flecsi@1 +cinch backend=mpi')

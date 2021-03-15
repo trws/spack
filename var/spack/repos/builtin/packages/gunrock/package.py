@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Gunrock(CMakePackage, CudaPackage):
@@ -52,6 +53,7 @@ class Gunrock(CMakePackage, CudaPackage):
     depends_on('googletest', when='+google_tests')
     depends_on('lcov', when='+code_coverage')
     depends_on('boost@1.58.0:', when='+boost')
+    depends_on(Boost.sensible_default_spec, when='+boost')
     depends_on('metis', when='+metis')
 
     conflicts('cuda_arch=none', when='+cuda',

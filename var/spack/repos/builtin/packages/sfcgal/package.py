@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Sfcgal(CMakePackage):
@@ -22,6 +23,7 @@ class Sfcgal(CMakePackage):
     # Ref: http://oslandia.github.io/SFCGAL/installation.html
     depends_on('cgal@4.3: +core')
     depends_on('boost@1.54.0:')
+    depends_on(Boost.sensible_default_spec)
     depends_on('mpfr@2.2.1:')
     depends_on('gmp@4.2:')
 

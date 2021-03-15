@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Helics(CMakePackage):
@@ -50,6 +51,7 @@ class Helics(CMakePackage):
     depends_on('git', type='build', when='@master:')
     depends_on('cmake@3.4:', type='build')
     depends_on('boost@1.70:', type='build', when='+boost')
+    depends_on(Boost.sensible_default_spec, type='build', when='+boost')
     depends_on('swig@3.0:', type='build', when='+swig')
 
     depends_on('libzmq@4.3:', when='+zmq')

@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Aoflagger(CMakePackage):
@@ -18,6 +19,7 @@ class Aoflagger(CMakePackage):
     depends_on('casacore+python+fftw@1.9.99:')
     depends_on('fftw~mpi@3.0:')
     depends_on('boost+python@:1.66.99')
+    depends_on(Boost.sensible_default_spec)
     depends_on('libxml2')
     depends_on('lapack')
     depends_on('cfitsio')

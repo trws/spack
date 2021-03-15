@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Mallocmc(CMakePackage):
@@ -34,4 +35,5 @@ class Mallocmc(CMakePackage):
 
     depends_on('cmake@2.8.12.2:', type='build')
     depends_on('boost@1.48.0:', type='link')
+    depends_on(Boost.sensible_default_spec, type='link')
     depends_on('cuda@5.0:', type='link')

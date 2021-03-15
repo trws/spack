@@ -3,6 +3,8 @@
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
+from spack.pkg.builtin.boost import Boost
+
 
 class SnapKorf(MakefilePackage):
     """SNAP is a general purpose gene finding program suitable for both
@@ -14,7 +16,7 @@ class SnapKorf(MakefilePackage):
     version('2013-11-29', sha256='e2a236392d718376356fa743aa49a987aeacd660c6979cee67121e23aeffc66a')
 
     depends_on('perl', type=('build', 'run'))
-    depends_on('boost')
+    depends_on(Boost.sensible_default_spec)
     depends_on('sqlite')
     depends_on('sparsehash')
 

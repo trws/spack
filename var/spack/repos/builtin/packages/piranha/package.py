@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Piranha(CMakePackage):
@@ -31,6 +32,7 @@ class Piranha(CMakePackage):
                when='~python')
     depends_on('boost+iostreams+regex+serialization+python',
                when='+python')
+    depends_on(Boost.sensible_default_spec)
     depends_on('bzip2')
     depends_on('gmp')   # mpir is a drop-in replacement for this
     depends_on('mpfr')  # Could also be built against mpir

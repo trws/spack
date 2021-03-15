@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Strelka(CMakePackage):
@@ -33,3 +34,4 @@ class Strelka(CMakePackage):
     depends_on('bzip2')
     depends_on('cmake@2.8.5:', type='build')
     depends_on('boost@1.56.0:')
+    depends_on(Boost.sensible_default_spec)

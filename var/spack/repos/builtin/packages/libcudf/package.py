@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Libcudf(CMakePackage):
@@ -18,7 +19,7 @@ class Libcudf(CMakePackage):
 
     depends_on('cmake@3.14:', type='build')
     depends_on('cuda@10.0:')
-    depends_on('boost')
+    depends_on(Boost.sensible_default_spec)
     depends_on('arrow+cuda+orc+parquet')
     depends_on('librmm')
     depends_on('dlpack')

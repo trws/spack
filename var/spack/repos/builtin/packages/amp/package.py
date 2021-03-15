@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Amp(CMakePackage):
@@ -31,7 +32,7 @@ class Amp(CMakePackage):
     # Everything should be compiled position independent (-fpic)
     depends_on('blas')
     depends_on('lapack')
-    depends_on('boost', when='+boost')
+    depends_on(Boost.sensible_default_spec, when='+boost')
     depends_on('petsc', when='+petsc')
     depends_on('trilinos', when='+trilinos')
     depends_on('hdf5', when='+hdf5')

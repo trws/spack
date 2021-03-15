@@ -5,6 +5,7 @@
 
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class MiopenOpencl(CMakePackage):
@@ -26,6 +27,7 @@ class MiopenOpencl(CMakePackage):
 
     depends_on('cmake@3:', type='build')
     depends_on('boost@1.67.0:1.73.0', type='link')
+    depends_on(Boost.sensible_default_spec, type='link')
     depends_on('pkgconfig', type='build')
     depends_on('bzip2', type='link')
     depends_on('sqlite', type='link')

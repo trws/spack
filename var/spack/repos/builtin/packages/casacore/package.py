@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 import os
 
 
@@ -55,6 +56,7 @@ class Casacore(CMakePackage):
     depends_on('hdf5', when='+hdf5')
     depends_on('python@2.6:', when='+python')
     depends_on('boost+python', when='+python')
+    depends_on(Boost.sensible_default_spec, when='+python')
     depends_on('py-numpy', when='+python')
 
     def cmake_args(self):

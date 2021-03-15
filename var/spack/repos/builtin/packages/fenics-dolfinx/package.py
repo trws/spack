@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class FenicsDolfinx(CMakePackage):
@@ -24,6 +25,7 @@ class FenicsDolfinx(CMakePackage):
     depends_on("mpi")
     depends_on("hdf5")
     depends_on("boost@1.7.0:+filesystem+program_options+timer")
+    depends_on(Boost.sensible_default_spec)
     depends_on("eigen@3.3.7:")
     depends_on("petsc+mpi+shared")
     depends_on("scotch+mpi")

@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Paradiseo(CMakePackage):
@@ -45,6 +46,7 @@ class Paradiseo(CMakePackage):
     depends_on("eigen", when='+edo', type='build')
     depends_on("boost~mpi", when='+edo~mpi')
     depends_on("boost+mpi", when='+edo+mpi')
+    depends_on(Boost.sensible_default_spec, when='+edo')
 
     # Patches
     patch('enable_eoserial.patch')

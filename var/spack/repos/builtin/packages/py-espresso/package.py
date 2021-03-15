@@ -5,6 +5,7 @@
 
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class PyEspresso(CMakePackage):
@@ -33,6 +34,7 @@ class PyEspresso(CMakePackage):
     depends_on("cmake@3.0:", type='build')
     depends_on("mpi")
     depends_on("boost+serialization+filesystem+system+python+mpi")
+    depends_on(Boost.sensible_default_spec)
     extends("python")
     depends_on("py-cython@0.23:", type="build")
     depends_on("py-numpy", type=("build", "run"))

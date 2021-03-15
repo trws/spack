@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 import os
 import shutil
@@ -73,6 +74,7 @@ class RangeV3(CMakePackage):
                when='+examples cxxstd=14')
     depends_on('boost@1.59.0: cxxstd=17', type='build',
                when='+examples cxxstd=17')
+    depends_on(Boost.sensible_default_spec, type='build')
 
     # Fix reported upstream issue
     # https://github.com/ericniebler/range-v3/issues/1196 per PR

@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+from spack.pkg.builtin.boost import Boost
 
 
 class Kea(AutotoolsPackage):
@@ -19,4 +20,4 @@ class Kea(AutotoolsPackage):
     depends_on('automake', type='build')
     depends_on('libtool',  type='build')
     depends_on('log4cplus')
-    depends_on('boost')
+    depends_on(Boost.sensible_default_spec)
