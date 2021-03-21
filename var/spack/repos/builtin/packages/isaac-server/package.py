@@ -35,7 +35,11 @@ class IsaacServer(CMakePackage):
     depends_on('jansson@:2.9', type='link', when='@:1.5.1')
     depends_on('jansson', type='link')
     depends_on('boost@1.56.0:', type='link')
-    depends_on(Boost.sensible_default_spec, type='link')
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants, type='link')
     depends_on('libwebsockets@2.1.1:', type='link')
     # depends_on('gstreamer@1.0', when='+gstreamer')
 

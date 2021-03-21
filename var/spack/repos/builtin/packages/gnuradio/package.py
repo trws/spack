@@ -33,7 +33,11 @@ class Gnuradio(CMakePackage):
     depends_on('log4cpp@1.0:')
     # https://github.com/gnuradio/gnuradio/pull/3566
     depends_on('boost@1.53:1.72.999')
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
     depends_on('py-numpy', type=('build', 'run'))
     depends_on('py-click', type=('build', 'run'))
     depends_on('py-pyyaml', type=('build', 'run'))

@@ -36,7 +36,11 @@ class Vigra(CMakePackage):
     depends_on('openexr', when='+exr')
     depends_on('py-numpy', type=('build', 'run'), when='+python')
     depends_on('boost+python+numpy', when='+python')
-    depends_on(Boost.sensible_default_spec, when='+python')
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants, when='+python')
     depends_on('py-sphinx', type='build', when='+python')
     depends_on('doxygen', type='build', when='+cxxdoc')
     depends_on('python', type='build', when='+cxxdoc')

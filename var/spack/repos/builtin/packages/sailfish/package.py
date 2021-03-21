@@ -16,5 +16,9 @@ class Sailfish(CMakePackage):
     version('0.10.1', sha256='a0d6d944382f2e07ffbfd0371132588e2f22bb846ecfc3d3435ff3d81b30d6c6')
 
     depends_on('boost@1.55:')
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
     depends_on('tbb')

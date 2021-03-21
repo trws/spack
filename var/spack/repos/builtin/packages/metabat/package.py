@@ -20,7 +20,11 @@ class Metabat(SConsPackage):
     version('2.11.2', sha256='9baf81b385e503e71792706237c308a21ff9177a3211c79057dcecf8434e9a67')
 
     depends_on('boost@1.55.0:', type=('build', 'run'))
-    depends_on(Boost.sensible_default_spec, type=('build', 'run'))
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants, type=('build', 'run'))
     depends_on('perl', type='run')
     depends_on('zlib', type='link')
     depends_on('ncurses', type='link')

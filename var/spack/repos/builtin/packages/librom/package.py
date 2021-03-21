@@ -22,7 +22,11 @@ class Librom(AutotoolsPackage):
     depends_on('perl')
     depends_on('graphviz')
     depends_on('doxygen')
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
 
     def configure_args(self):
         spec = self.spec

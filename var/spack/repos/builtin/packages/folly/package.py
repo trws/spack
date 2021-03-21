@@ -37,7 +37,11 @@ class Folly(AutotoolsPackage):
     # TODO: folly requires gcc 4.9+ and a version of boost compiled with
     # TODO: C++14 support (but there's no neat way to check that these
     # TODO: constraints are met right now)
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
 
     depends_on('gflags')
     depends_on('glog')

@@ -17,7 +17,10 @@ class Lordec(MakefilePackage):
 
     version('0.8', sha256='3894a7c57649a3545b598f92a48d55eda66d729ab51606b00470c50611b12823')
 
-    depends_on(Boost.sensible_default_spec)
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
     depends_on('cmake@3.1.0:', type='build')
 
     build_targets = ['clean', 'all']

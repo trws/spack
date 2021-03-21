@@ -31,7 +31,11 @@ class Ecflow(CMakePackage):
     # Boost-1.7X release not working well on serialization
     depends_on('boost@1.53:1.69+python')
     depends_on('boost@1.53:1.69+pic', when='+static_boost')
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
     depends_on('qt@5:', when='+ui')
     depends_on('cmake@2.12.11:', type='build')
 

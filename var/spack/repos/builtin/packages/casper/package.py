@@ -19,7 +19,11 @@ class Casper(MakefilePackage):
     version('0.8.2', sha256='3005e165cebf8ce4e12815b7660a833e0733441b5c7e5ecbfdccef7414b0c914')
 
     depends_on('jellyfish@2.2.3:')
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
 
     conflicts('%gcc@7.1.0')
 

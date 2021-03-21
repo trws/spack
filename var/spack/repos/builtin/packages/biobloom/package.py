@@ -16,7 +16,10 @@ class Biobloom(AutotoolsPackage):
 
     version('2.2.0', sha256='5d09f8690f0b6402f967ac09c5b0f769961f3fe3791000f8f73af6af7324f02c')
 
-    depends_on(Boost.sensible_default_spec)
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
     depends_on('sdsl-lite')
     depends_on('sparsehash')
     depends_on('zlib')

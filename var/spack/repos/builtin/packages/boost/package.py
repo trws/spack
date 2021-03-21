@@ -75,7 +75,7 @@ class Boost(Package):
     version('1.34.1', sha256='0f866c75b025a4f1340117a106595cc0675f48ba1e5a9b5c221ec7f19e96ec4c')
     version('1.34.0', sha256='455cb8fa41b759272768257c2e7bdc5c47ec113245dfa533f275e787a855efd2')
 
-    sensible_default_spec = ("boost+atomic+chrono+date_time+exception+filesystem"
+    with_default_variants = ("boost+atomic+chrono+date_time+exception+filesystem"
                              "+graph+iostreams+locale+log+math+program_options"
                              "+random+regex+serialization+signals+system+test"
                              "+thread+timer+wave")

@@ -24,7 +24,11 @@ class Dire(Package):
     version('2.004', sha256='8cc1213b58fec744fdaa50834560a14b141de99efb2c3e3d3d47f3d6d84b179f')
 
     depends_on('zlib')
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
     depends_on('lhapdf')
     depends_on('hepmc')
     depends_on('pythia8@8226:8244')

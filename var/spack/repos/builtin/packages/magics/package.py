@@ -69,7 +69,11 @@ class Magics(CMakePackage):
     # https://github.com/OSGeo/PROJ/wiki/proj.h-adoption-status
     depends_on('proj@:5', when='@:4.2.6')
     depends_on('proj@6:', when='@4.3:')
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
     depends_on('expat')
 
     # Magics (at least up to version 2.34.3) should directly and

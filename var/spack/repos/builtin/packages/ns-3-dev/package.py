@@ -29,7 +29,11 @@ class Ns3Dev(WafPackage):
 
     # Build dependency
     depends_on('helics', when='+helics')
-    depends_on(Boost.sensible_default_spec, when='+boost')
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants, when='+boost')
     depends_on('pkgconfig', type='build')
 
     resource(name='helics',

@@ -27,7 +27,11 @@ class Augustus(MakefilePackage):
     depends_on('perl', type=('build', 'run'))
     depends_on('bamtools')
     depends_on('gsl')
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
     depends_on('zlib')
     depends_on('htslib', when='@3.3.1:')
     depends_on('bcftools', when='@3.3.1:')

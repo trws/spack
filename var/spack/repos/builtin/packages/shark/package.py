@@ -18,7 +18,10 @@ class Shark(CMakePackage):
     version('4.0.0', sha256='19d4099776327d5f8a2e2be286818c6081c61eb13ca279c1e438c86e70d90210')
     version('3.1.4', sha256='160c35ddeae3f6aeac3ce132ea4ba2611ece39eee347de2faa3ca52639dc6311')
 
-    depends_on(Boost.sensible_default_spec)
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
 
     def cmake_args(self):
         args = ["-DBoost_USE_STATIC_LIBS=ON", "-DBOOST_ROOT={0}".format(

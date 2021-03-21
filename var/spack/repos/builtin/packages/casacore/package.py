@@ -56,7 +56,11 @@ class Casacore(CMakePackage):
     depends_on('hdf5', when='+hdf5')
     depends_on('python@2.6:', when='+python')
     depends_on('boost+python', when='+python')
-    depends_on(Boost.sensible_default_spec, when='+python')
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants, when='+python')
     depends_on('py-numpy', when='+python')
 
     def cmake_args(self):

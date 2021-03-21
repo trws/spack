@@ -31,7 +31,11 @@ class YamlCpp(CMakePackage):
             description='Build yaml-cpp tests using internal gtest')
 
     depends_on('boost@:1.66.99', when='@0.5.0:0.5.3')
-    depends_on(Boost.sensible_default_spec, when='@0.5.0:0.5.3')
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants, when='@0.5.0:0.5.3')
 
     conflicts('%gcc@:4.7', when='@0.6.0:', msg="versions 0.6.0: require c++11 support")
     conflicts('%clang@:3.3.0', when='@0.6.0:', msg="versions 0.6.0: require c++11 support")

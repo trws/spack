@@ -42,7 +42,10 @@ class N2p2(MakefilePackage):
     depends_on("py-sphinx", type="build", when="+doc")
     depends_on("py-sphinx-rtd-theme", type="build", when="+doc")
 
-    depends_on(Boost.sensible_default_spec, type="link")
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants, type="link")
     depends_on("lcov", type=("build", "run"))
     depends_on("py-pytest", type=("build", "run"))
     depends_on("py-pytest-cov", type="run")

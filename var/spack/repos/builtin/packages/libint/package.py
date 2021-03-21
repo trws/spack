@@ -50,7 +50,11 @@ class Libint(AutotoolsPackage):
     depends_on('libtool', type='build')
 
     # Libint 2 dependencies
-    depends_on(Boost.sensible_default_spec, when='@2:')
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants, when='@2:')
     depends_on('gmp', when='@2:')
 
     for tvariant in TUNE_VARIANTS[1:]:

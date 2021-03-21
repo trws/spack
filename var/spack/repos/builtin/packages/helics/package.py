@@ -51,7 +51,11 @@ class Helics(CMakePackage):
     depends_on('git', type='build', when='@master:')
     depends_on('cmake@3.4:', type='build')
     depends_on('boost@1.70:', type='build', when='+boost')
-    depends_on(Boost.sensible_default_spec, type='build', when='+boost')
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants, type='build', when='+boost')
     depends_on('swig@3.0:', type='build', when='+swig')
 
     depends_on('libzmq@4.3:', when='+zmq')

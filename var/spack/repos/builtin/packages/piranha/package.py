@@ -32,7 +32,11 @@ class Piranha(CMakePackage):
                when='~python')
     depends_on('boost+iostreams+regex+serialization+python',
                when='+python')
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
     depends_on('bzip2')
     depends_on('gmp')   # mpir is a drop-in replacement for this
     depends_on('mpfr')  # Could also be built against mpir

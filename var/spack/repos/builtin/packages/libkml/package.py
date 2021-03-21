@@ -27,7 +27,11 @@ class Libkml(CMakePackage):
     # See DEPENDENCIES
     depends_on('cmake@2.8:', type='build')
     depends_on('boost@1.44.0:')
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
     depends_on('expat@2.1.0:')
     depends_on('minizip@1.2.8:')
     depends_on('uriparser')

@@ -51,7 +51,11 @@ class Pagmo(CMakePackage):
     depends_on('boost+system+serialization+thread+python',           when='+python~gtop')
     depends_on('boost+system+serialization+thread+date_time',        when='~python+gtop')
     depends_on('boost+system+serialization+thread+python+date_time', when='+python+gtop')
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
 
     depends_on('gsl@1.15:',       when='+gsl')
     depends_on('ipopt',           when='+ipopt')

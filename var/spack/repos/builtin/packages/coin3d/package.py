@@ -19,7 +19,11 @@ class Coin3d(AutotoolsPackage):
     version('2.0.0', sha256='6d26435aa962d085b7accd306a0b478069a7de1bc5ca24e22344971852dd097c')
 
     depends_on('boost@1.45.0:', type='build')
-    depends_on(Boost.sensible_default_spec, type='build')
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants, type='build')
     depends_on('doxygen', when='+html', type='build')
     depends_on('perl', when='+html', type='build')
     depends_on('glu', type='link')

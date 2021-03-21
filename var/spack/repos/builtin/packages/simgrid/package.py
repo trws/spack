@@ -45,7 +45,11 @@ class Simgrid(CMakePackage):
     variant('mc', default=False, description='Model checker')
 
     # does not build correctly with some old compilers -> rely on packages
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
 
     def setup_dependent_package(self, module, dep_spec):
 

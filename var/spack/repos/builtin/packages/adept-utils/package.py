@@ -17,6 +17,10 @@ class AdeptUtils(CMakePackage):
     version('1.0',   sha256='fed29366c9bcf5f3799220ae3b351d2cb338e2aa42133d61584ea650aa8d6ff7')
 
     depends_on('boost@:1.72.0')
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
     depends_on('mpi')
     depends_on('cmake@2.8:', type='build')

@@ -19,7 +19,11 @@ class Libfive(CMakePackage):
     depends_on('pkgconfig', type='build')
     depends_on('cmake@3.3:', type='build')
     depends_on('boost@1.65:')
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
     depends_on('eigen@3.3.0:')
     depends_on('libpng')
     depends_on('qt@5.7:')

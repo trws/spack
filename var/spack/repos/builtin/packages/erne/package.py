@@ -19,7 +19,11 @@ class Erne(AutotoolsPackage):
             description='Build with OpenMPI support')
 
     depends_on('boost@1.40.0:', type=('build', 'link', 'run'))
-    depends_on(Boost.sensible_default_spec, type=('build', 'link', 'run'))
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants, type=('build', 'link', 'run'))
     depends_on('openmpi', type=('build', 'run'), when='+mpi')
 
     def configure_args(self):

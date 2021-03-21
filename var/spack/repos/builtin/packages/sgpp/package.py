@@ -99,7 +99,11 @@ class Sgpp(SConsPackage):
     depends_on('mpi', when='+mpi', type=('build', 'run'))
     # Testing requires boost test
     depends_on('boost+test', type=('test'))
-    depends_on(Boost.sensible_default_spec, type=('test'))
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants, type=('test'))
 
     # Compiler with C++11 support is required
     conflicts('%gcc@:4.8.4', msg='Compiler with c++11 support is required!')

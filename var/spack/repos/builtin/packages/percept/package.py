@@ -25,7 +25,11 @@ class Percept(CMakePackage):
     depends_on('googletest~shared')
     depends_on('opennurbs@percept')
     depends_on('boost+graph+mpi')
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
     depends_on('yaml-cpp+pic~shared@0.5.3:')
     depends_on('trilinos~shared+exodus+tpetra+epetra+epetraext+muelu+belos+ifpack2+amesos2+zoltan+stk+boost~superlu-dist+superlu+hdf5+zlib+pnetcdf+aztec+sacado~openmp+shards+intrepid+cgns@master,12.14.1:')
 

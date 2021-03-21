@@ -24,7 +24,11 @@ class Herwig3(AutotoolsPackage):
     depends_on('m4',       type='build')
     depends_on('lhapdf',   type='link')
     depends_on('thepeg@2.2.1', when='@7.2.1', type='link')
-    depends_on(Boost.sensible_default_spec, type='link')
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants, type='link')
     depends_on('python', type=('build', 'run'))
     depends_on('gsl', type='link')
     depends_on('fastjet', type='link')

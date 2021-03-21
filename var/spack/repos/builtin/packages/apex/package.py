@@ -17,7 +17,11 @@ class Apex(CMakePackage):
 
     depends_on("binutils+libiberty@:2.33.1")
     depends_on("boost@1.54:")
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
     depends_on('cmake@2.8.12:', type='build')
     depends_on("activeharmony@4.5:")
     depends_on("ompt-openmp")

@@ -55,7 +55,11 @@ class Stat(AutotoolsPackage):
     depends_on('py-xdot@1.0', when='@4.0.1:')
     depends_on('swig')
     depends_on('mpi', when='+examples')
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
 
     patch('configure_mpicxx.patch', when='@2.1.0')
 

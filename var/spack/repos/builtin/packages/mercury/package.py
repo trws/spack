@@ -50,9 +50,17 @@ class Mercury(CMakePackage):
     depends_on('libfabric@1.5:', when='+ofi')
     depends_on('openpa@1.0.3:', when='%gcc@:4.8')
     depends_on('boost@1.48:', when='+boostsys')
-    depends_on(Boost.sensible_default_spec, when='+boostsys')
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants, when='+boostsys')
     depends_on('boost', when='@:0.9')  # internal boost headers were added in 1.0.0
-    depends_on(Boost.sensible_default_spec, when='@:0.9')
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants, when='@:0.9')
 
     conflicts('+ofi', when='@:0.9')    # libfabric support was added in 1.0.0
     conflicts('~ofi', when='+udreg')   # udreg option is specific to OFI

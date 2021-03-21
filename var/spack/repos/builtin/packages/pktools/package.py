@@ -24,7 +24,11 @@ class Pktools(CMakePackage):
     depends_on('gsl')
     depends_on('armadillo')
     depends_on('nlopt')
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
     depends_on('fann', when='+fann')
     depends_on('liblas', when='+liblas')
 

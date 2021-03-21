@@ -19,7 +19,11 @@ class Aoflagger(CMakePackage):
     depends_on('casacore+python+fftw@1.9.99:')
     depends_on('fftw~mpi@3.0:')
     depends_on('boost+python@:1.66.99')
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
     depends_on('libxml2')
     depends_on('lapack')
     depends_on('cfitsio')

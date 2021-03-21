@@ -30,7 +30,11 @@ class Openbabel(CMakePackage):
     depends_on('cmake@3.1:', type='build')
     depends_on('pkgconfig', type='build')
     depends_on('swig@2.0:', type='build', when='+python')
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
     depends_on('cairo')       # required to support PNG depiction
     depends_on('pango')       # custom cairo requires custom pango
     depends_on('eigen@3.0:')  # required if using the language bindings

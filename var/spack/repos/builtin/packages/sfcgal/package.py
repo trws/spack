@@ -23,7 +23,11 @@ class Sfcgal(CMakePackage):
     # Ref: http://oslandia.github.io/SFCGAL/installation.html
     depends_on('cgal@4.3: +core')
     depends_on('boost@1.54.0:')
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
     depends_on('mpfr@2.2.1:')
     depends_on('gmp@4.2:')
 

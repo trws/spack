@@ -19,7 +19,11 @@ class Libcudf(CMakePackage):
 
     depends_on('cmake@3.14:', type='build')
     depends_on('cuda@10.0:')
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
     depends_on('arrow+cuda+orc+parquet')
     depends_on('librmm')
     depends_on('dlpack')

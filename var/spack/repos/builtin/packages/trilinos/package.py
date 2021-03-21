@@ -368,7 +368,11 @@ class Trilinos(CMakePackage, CudaPackage):
     # Everything should be compiled position independent (-fpic)
     depends_on('blas')
     depends_on('lapack')
-    depends_on(Boost.sensible_default_spec, when='+boost')
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants, when='+boost')
     depends_on('glm', when='+glm')
     depends_on('hdf5+hl', when='+hdf5')
     depends_on('matio', when='+matio')

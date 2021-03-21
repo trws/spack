@@ -22,7 +22,11 @@ class Cleverleaf(CMakePackage):
 
     depends_on('samrai@3.8.0:')
     depends_on('hdf5+mpi')
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
     depends_on('cmake@3.1:', type='build')
 
     # The Fujitsu compiler requires the '--linkfortran'

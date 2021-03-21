@@ -47,7 +47,11 @@ class Dakota(CMakePackage):
     depends_on('python')
     depends_on('perl-data-dumper', type='build', when='@6.12:')
     depends_on('boost@:1.68.0', when='@:6.12')
-    depends_on(Boost.sensible_default_spec, when='@:6.12')
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants, when='@:6.12')
     depends_on('cmake@2.8.9:', type='build')
 
     def cmake_args(self):

@@ -20,4 +20,8 @@ class Pcl(CMakePackage):
     depends_on('eigen@3.1:')
     depends_on('flann@1.7:')
     depends_on('boost@1.55:+filesystem+date_time+iostreams+system')
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)

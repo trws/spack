@@ -34,7 +34,11 @@ class PyPycuda(PythonPackage):
     depends_on('py-setuptools', type='build')
     depends_on('cuda')
     depends_on('boost+python')
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
     depends_on('python@3.6:3.999', type=('build', 'run'), when='@2020.1:')
     depends_on('py-numpy@1.6:', type=('build', 'run'))
     depends_on('py-pytools@2011.2:', type=('build', 'run'))

@@ -85,7 +85,11 @@ class NaluWind(CMakePackage, CudaPackage):
     depends_on('fftw+mpi', when='+fftw')
 
     depends_on('boost cxxstd=14', when='+boost')
-    depends_on(Boost.sensible_default_spec, when='+boost')
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants, when='+boost')
 
     conflicts('+cuda', when='+shared')
 

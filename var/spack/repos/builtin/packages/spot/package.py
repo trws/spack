@@ -23,4 +23,8 @@ class Spot(AutotoolsPackage):
     depends_on("python@3.2:", when='@1.99: +python')
     depends_on("python@2:", when='+python')
     depends_on('boost', when='@:1.2.6')
-    depends_on(Boost.sensible_default_spec, when='@:1.2.6')
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants, when='@:1.2.6')

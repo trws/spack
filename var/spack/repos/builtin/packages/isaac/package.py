@@ -37,7 +37,11 @@ class Isaac(CMakePackage):
     depends_on('jansson', type='link')
     depends_on('boost@1.56.0:', type='link')
     depends_on('boost@1.65.1:', type='link', when='^cuda@9:')
-    depends_on(Boost.sensible_default_spec, type='link')
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants, type='link')
     depends_on('cuda@7.0:', type='link', when='+cuda')
     # depends_on('alpaka@0.3', when='+alpaka')
     depends_on('icet', type='link')

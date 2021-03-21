@@ -69,7 +69,11 @@ class Rose(AutotoolsPackage):
     # C++11 compatible boost and gcc versions required for +cxx11 variant:
     depends_on("boost@1.60.0:1.64.0,1.65.1,1.66.0:1.67.0 cxxstd=11", when="+cxx11")
     depends_on("boost@1.60.0:1.64.0,1.65.1,1.66.0:1.67.0",           when="~cxx11")
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
 
     # --------------------------------------------------------------------------
     # Variants

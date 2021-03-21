@@ -46,7 +46,11 @@ class Extrae(AutotoolsPackage):
 
     depends_on("mpi")
     depends_on("libunwind")
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
     depends_on("libdwarf")
     depends_on("papi")
     depends_on("elf", type="link")

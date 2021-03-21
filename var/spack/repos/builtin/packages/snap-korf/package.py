@@ -16,7 +16,11 @@ class SnapKorf(MakefilePackage):
     version('2013-11-29', sha256='e2a236392d718376356fa743aa49a987aeacd660c6979cee67121e23aeffc66a')
 
     depends_on('perl', type=('build', 'run'))
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
     depends_on('sqlite')
     depends_on('sparsehash')
 

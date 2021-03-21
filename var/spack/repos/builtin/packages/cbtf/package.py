@@ -42,7 +42,11 @@ class Cbtf(CMakePackage):
     depends_on("libtirpc", type='link')
 
     depends_on("boost@1.66.0:1.69.0")
-    depends_on(Boost.sensible_default_spec)
+
+    # TODO: replace this with an explicit list of components of Boost,
+    # for instance depends_on('boost +filesystem')
+    # See https://github.com/spack/spack/pull/22303 for reference
+    depends_on(Boost.with_default_variants)
 
     # For MRNet
     depends_on("mrnet@5.0.1-3:+cti", when='@develop+cti')
