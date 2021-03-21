@@ -5,7 +5,6 @@
 
 
 from spack import *
-from spack.pkg.builtin.boost import Boost
 import sys
 
 
@@ -84,6 +83,10 @@ class Hpx(CMakePackage, CudaPackage):
     # https://github.com/STEllAR-GROUP/hpx/issues/4728#issuecomment-640685308
     depends_on('boost@:1.72.0', when='@:1.4')
 
+    depends_on('boost+filesystem', when='cxxstd=11')
+    depends_on('boost+filesystem', when='cxxstd=14')
+    depends_on('boost+system+program_options+chrono+date_time+log+regex+thread')
+
     # COROUTINES
     # ~generic_coroutines conflict is not fully implemented
     # for additional information see:
@@ -96,12 +99,7 @@ class Hpx(CMakePackage, CudaPackage):
     # CXX Standard
     depends_on('boost cxxstd=11', when='cxxstd=11')
     depends_on('boost cxxstd=14', when='cxxstd=14')
-    depends_on('boost cxxstd=17', when='cxxstd=17')
-
-    # TODO: replace this with an explicit list of components of Boost,
-    # for instance depends_on('boost +filesystem')
-    # See https://github.com/spack/spack/pull/22303 for reference
-    depends_on(Boost.with_default_variants)
+    depends_on('boost cxxstd=17', when='cxxstd=17'))
 
     # Malloc
     depends_on('gperftools', when='malloc=tcmalloc')
