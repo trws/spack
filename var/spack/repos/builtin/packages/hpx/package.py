@@ -99,7 +99,7 @@ class Hpx(CMakePackage, CudaPackage):
     # CXX Standard
     depends_on('boost cxxstd=11', when='cxxstd=11')
     depends_on('boost cxxstd=14', when='cxxstd=14')
-    depends_on('boost cxxstd=17', when='cxxstd=17'))
+    depends_on('boost cxxstd=17', when='cxxstd=17')
 
     # Malloc
     depends_on('gperftools', when='malloc=tcmalloc')
