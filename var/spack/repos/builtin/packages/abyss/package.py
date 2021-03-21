@@ -5,7 +5,6 @@
 
 import numbers
 from spack import *
-from spack.pkg.builtin.boost import Boost
 
 
 def is_multiple_32(x):
