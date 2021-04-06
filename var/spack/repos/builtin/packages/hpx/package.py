@@ -83,16 +83,23 @@ class Hpx(CMakePackage, CudaPackage):
     # https://github.com/STEllAR-GROUP/hpx/issues/4728#issuecomment-640685308
     depends_on('boost@:1.72.0', when='@:1.4')
 
+    depends_on('boost@1.64.0:', when='@1.5')
+    depends_on('boost@1.66.0:', when='@1.6')
+
     depends_on('boost+filesystem', when='cxxstd=11')
     depends_on('boost+filesystem', when='cxxstd=14')
-    depends_on('boost+system+program_options+chrono+date_time+log+regex+thread')
+    depends_on('boost+filesystem', when='%gcc@:8')
+    depends_on('boost+filesystem', when='%clang@:8')
+    depends_on('boost+system', when='boost@:1.70')
+    depends_on('boost+program_options', when='@:1.5')
+    depends_on('boost+regex', when='+tools')
 
     # COROUTINES
     # ~generic_coroutines conflict is not fully implemented
     # for additional information see:
     # https://github.com/spack/spack/pull/17654
     # https://github.com/STEllAR-GROUP/hpx/issues/4829
-    depends_on('boost+context', when='+generic_coroutines')
+    depends_on('boost+context+thread+chrono', when='+generic_coroutines')
     _msg_generic_coroutines = 'This platform requires +generic_coroutines'
     conflicts('~generic_coroutines', when='platform=darwin', msg=_msg_generic_coroutines)
 
