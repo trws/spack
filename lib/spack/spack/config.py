@@ -104,6 +104,9 @@ config_defaults = {
         'build_jobs': min(16, cpus_available()),
         'build_stage': '$tempdir/spack-stage',
         'concretizer': 'clingo',
+        'flags': {
+            'werror': 'none',
+        },
     }
 }
 
