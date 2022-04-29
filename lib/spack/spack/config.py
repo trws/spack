@@ -105,7 +105,7 @@ config_defaults = {
         'build_stage': '$tempdir/spack-stage',
         'concretizer': 'clingo',
         'flags': {
-            'werror': 'none',
+            'keep_werror': 'none',
         },
     }
 }

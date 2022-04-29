@@ -94,7 +94,7 @@ properties = {
             'flags': {
                 'type': 'object',
                 'properties': {
-                    'werror': { 'type': 'string', 'enum': ['all','specific','none'], },
+                    'keep_werror': { 'type': 'string', 'enum': ['all','specific','none'], },
                 },
             },
         },
