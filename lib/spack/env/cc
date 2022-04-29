@@ -484,13 +484,11 @@ while [ $# -ne 0 ]; do
     eval "\
     case '$1' in
         $SPACK_COMPILER_FLAGS_KEEP)
-            echo keeping "$1"
             append other_args_list "$1"
             shift
             continue
             ;;
         $SPACK_COMPILER_FLAGS_REMOVE)
-            echo removing "$1"
             shift
             continue
             ;;
