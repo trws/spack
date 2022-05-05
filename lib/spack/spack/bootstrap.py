@@ -501,10 +501,11 @@ def ensure_module_importable_or_raise(module, abstract_spec=None):
         try:
             if b.try_import(module, abstract_spec):
                 return
-        except Exception as e:
+        except TypeError as e:
             msg = '[BOOTSTRAP MODULE {0}] Unexpected error "{1}"'
             tty.debug(msg.format(module, str(e)))
             errors[current_config['name']] = e
+            raise e
 
     # We couldn't import in any way, so raise an import error
     msg = 'cannot bootstrap the "{0}" Python module'.format(module)
